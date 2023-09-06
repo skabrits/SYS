@@ -20,6 +20,9 @@ spec:
     targetRevision: "*"
     helm:
       releaseName: main
+      parameters:
+      - name: "global.configureCertmanager"
+        value: "false"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: gitlab
