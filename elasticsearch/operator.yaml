@@ -409,7 +409,7 @@ spec:
       securityContext:
         runAsNonRoot: true
       containers:
-      - image: "docker.elastic.co/eck/eck-operator:2.5.0"
+      - image: "skabrits/eck-operator:2.5.0"
         imagePullPolicy: IfNotPresent
         name: manager
         args:
