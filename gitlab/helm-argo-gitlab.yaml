@@ -21,7 +21,7 @@ spec:
     helm:
       releaseName: main
       parameters:
-      - name: "global.configureCertmanager"
+      - name: "global.ingress.configureCertmanager"
         value: "false"
   destination:
     server: "https://kubernetes.default.svc"
