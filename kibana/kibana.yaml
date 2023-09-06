@@ -5,6 +5,7 @@ metadata:
   namespace: log-system
 spec:
   version: 7.10.1
+  image: skabrits/kibana:7.10.1
   count: 1
   elasticsearchRef:
     name: elastic
