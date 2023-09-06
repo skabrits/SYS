@@ -4,6 +4,8 @@ kind: OpenTelemetryCollector
 metadata:
   name: otel-collector-daemonset
   namespace: log-system
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   mode: daemonset
   config: |
