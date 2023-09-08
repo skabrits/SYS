@@ -1,28 +1,28 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: gitlab
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
-  project: default
-  source:
-    chart: gitlab
-    repoURL: https://charts.gitlab.io
-    targetRevision: "*"
-    helm:
-      releaseName: main
-      parameters:
-      - name: "global.ingress.configureCertmanager"
-        value: "false"
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: gitlab
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+  # name: gitlab
+  # namespace: argocd
+  # finalizers:
+    # - resources-finalizer.argocd.argoproj.io
+# spec:
+  # syncPolicy:
+    # syncOptions:
+      # - CreateNamespace=true
+    # automated:
+      # prune: true
+      # selfHeal: true
+      # allowEmpty: true
+  # project: default
+  # source:
+    # chart: gitlab
+    # repoURL: https://charts.gitlab.io
+    # targetRevision: "*"
+    # helm:
+      # releaseName: main
+      # parameters:
+      # - name: "global.ingress.configureCertmanager"
+        # value: "false"
+  # destination:
+    # server: "https://kubernetes.default.svc"
+    # namespace: gitlab
