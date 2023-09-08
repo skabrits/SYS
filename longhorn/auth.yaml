@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
-  auth: YWRtaW46bUpEdjBERi5RNEg5QXZhTFdHajNvOC4uUnZHLw==
+  auth: YWRtaW46JGFwcjEkWVpZNUE5N3gkaVRaNXQ2MDBJUjN0Tm01LzBQaENhLwo=
 kind: Secret
 metadata:
-  name: auth-secret
+  name: basic-auth
   namespace: longhorn-system
