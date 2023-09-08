@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  auth: YWRtaW46dGVzdA==
+kind: Secret
+metadata:
+  name: auth-secret
+  namespace: longhorn-system
