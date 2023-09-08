@@ -33,7 +33,7 @@ spec:
         value: "true"
       - name: "grafana\\.ini.server.root_url"
         value: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
-      - name: "server.domain"
+      - name: "grafana\\.ini.server.domain"
         value: "grafana.example.com"
       - name: "grafana\\.ini.server.serve_from_sub_path"
         value: "true"
