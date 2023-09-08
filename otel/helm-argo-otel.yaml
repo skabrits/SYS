@@ -1,25 +1,25 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: otel
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
-  project: default
-  source:
-    chart: opentelemetry-operator
-    repoURL: https://open-telemetry.github.io/opentelemetry-helm-charts
-    targetRevision: "*"
-    helm:
-      releaseName: otelo
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: opentelemetry-operator-system
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+  # name: otel
+  # namespace: argocd
+  # finalizers:
+    # - resources-finalizer.argocd.argoproj.io
+# spec:
+  # syncPolicy:
+    # syncOptions:
+      # - CreateNamespace=true
+    # automated:
+      # prune: true
+      # selfHeal: true
+      # allowEmpty: true
+  # project: default
+  # source:
+    # chart: opentelemetry-operator
+    # repoURL: https://open-telemetry.github.io/opentelemetry-helm-charts
+    # targetRevision: "*"
+    # helm:
+      # releaseName: otelo
+  # destination:
+    # server: "https://kubernetes.default.svc"
+    # namespace: opentelemetry-operator-system
