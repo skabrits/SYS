@@ -20,6 +20,9 @@ spec:
     targetRevision: "*"
     helm:
       releaseName: longhorn
+      parameters:
+      - name: "helmPreUpgradeCheckerJob.enbaled"
+        value: "false"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: longhorn-system
