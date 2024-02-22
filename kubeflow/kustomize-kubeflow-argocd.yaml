@@ -1,26 +1,26 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: kubeflow
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
-  project: default
-  source:
-    path: "./example"
-    repoURL: https://github.com/skabrits/kubeflow-manifests.git
-    targetRevision: "master"
-    kustomize:
-      commonLabels:
-        deployed: "kustomize"
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: "argocd"
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: kubeflow
+#  namespace: argocd
+#  finalizers:
+#    - resources-finalizer.argocd.argoproj.io
+#spec:
+#  syncPolicy:
+#    syncOptions:
+#      - CreateNamespace=true
+#    automated:
+#      prune: true
+#      selfHeal: true
+#      allowEmpty: true
+#  project: default
+#  source:
+#    path: "./example"
+#    repoURL: https://github.com/skabrits/kubeflow-manifests.git
+#    targetRevision: "master"
+#    kustomize:
+#      commonLabels:
+#        deployed: "kustomize"
+#  destination:
+#    server: "https://kubernetes.default.svc"
+#    namespace: "argocd"
