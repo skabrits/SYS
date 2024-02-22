@@ -4,7 +4,7 @@ metadata:
   name: access-kf-pipeline
   namespace: kubeflow-admin-user
 spec:
-  desc: Allow access to KFP
+  desc: "Allow access to KFP"
   selector:
     matchLabels:
       access-kf-pipeline: "true"
