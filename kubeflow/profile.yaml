@@ -1,7 +1,8 @@
 apiVersion: kubeflow.org/v1beta1
 kind: Profile
 metadata:
-  name: fake-com  
+  name: fake-com 
+  namespace: kubeflow
 spec:
   owner:
     kind: User
