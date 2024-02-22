@@ -16,6 +16,9 @@ spec:
     path: "./example"
     repoURL: https://github.com/skabrits/kubeflow-manifests.git
     targetRevision: "master"
+    kustomize:
+      commonLabels:
+        deployed: "kustomize"
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: "kubeflow"
+    namespace: "argocd"
