@@ -20,6 +20,23 @@ spec:
     targetRevision: "*"
     helm:
       releaseName: gforce
+      parameters:
+      - name: "toolkit.env[0].name"
+        value: "CONTAINERD_CONFIG"
+      - name: "toolkit.env[0].value"
+        value: "/var/lib/rancher/k3s/agent/etc/containerd/config.toml"
+      - name: "toolkit.env[1].name"
+        value: "CONTAINERD_SOCKET"
+      - name: "toolkit.env[1].value"
+        value: "/run/k3s/containerd/containerd.sock"
+      - name: "toolkit.env[2].name"
+        value: "CONTAINERD_RUNTIME_CLASS"
+      - name: "toolkit.env[2].value"
+        value: "nvidia"
+      - name: "toolkit.env[3].name"
+        value: "CONTAINERD_SET_AS_DEFAULT"
+      - name: "toolkit.env[3].value
+        value: "true"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: gpu-operator
