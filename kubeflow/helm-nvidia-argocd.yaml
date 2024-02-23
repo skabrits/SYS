@@ -35,7 +35,7 @@ spec:
         value: "nvidia"
       - name: "toolkit.env[3].name"
         value: "CONTAINERD_SET_AS_DEFAULT"
-      - name: "toolkit.env[3].value
+      - name: "toolkit.env[3].value"
         value: "true"
   destination:
     server: "https://kubernetes.default.svc"
