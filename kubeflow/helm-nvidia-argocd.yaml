@@ -17,7 +17,7 @@ spec:
   source:
     chart: gpu-operator
     repoURL: https://helm.ngc.nvidia.com/nvidia
-    targetRevision: "*"
+    targetRevision: "23.9.1"
     helm:
       releaseName: gforce
       parameters:
