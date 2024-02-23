@@ -1,31 +1,31 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: kubeflow-ingressgateway-certs
-  namespace: istio-system
-spec:
-  secretName: kubeflow-ingressgateway-certs
-  issuerRef:
-    kind: ClusterIssuer
-    name: gateways-issuer
-  commonName: istio-ingressgateway.istio-system.svc
-  ipAddresses:
-  - 192.168.0.140
-  - 192.168.0.141
-  - 192.168.0.142
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: kubeflow-minio-certs
-  namespace: istio-system
-spec:
-  secretName: kubeflow-minio-certs
-  issuerRef:
-    kind: ClusterIssuer
-    name: gateways-issuer
-  commonName: minio-service.kubeflow.svc
-  ipAddresses:
-  - 192.168.0.140
-  - 192.168.0.141
-  - 192.168.0.142
+#apiVersion: cert-manager.io/v1
+#kind: Certificate
+#metadata:
+#  name: kubeflow-ingressgateway-certs
+#  namespace: istio-system
+#spec:
+#  secretName: kubeflow-ingressgateway-certs
+#  issuerRef:
+#    kind: ClusterIssuer
+#    name: gateways-issuer
+#  commonName: istio-ingressgateway.istio-system.svc
+#  ipAddresses:
+#  - 192.168.0.140
+#  - 192.168.0.141
+#  - 192.168.0.142
+#---
+#apiVersion: cert-manager.io/v1
+#kind: Certificate
+#metadata:
+#  name: kubeflow-minio-certs
+#  namespace: istio-system
+#spec:
+#  secretName: kubeflow-minio-certs
+#  issuerRef:
+#    kind: ClusterIssuer
+#    name: gateways-issuer
+#  commonName: minio-service.kubeflow.svc
+#  ipAddresses:
+#  - 192.168.0.140
+#  - 192.168.0.141
+#  - 192.168.0.142
