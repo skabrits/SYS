@@ -3,6 +3,8 @@ kind: Profile
 metadata:
   name: fake-com 
   namespace: kubeflow
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   owner:
     kind: User
