@@ -1,25 +1,25 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: gpu-metrics
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
-  project: default
-  source:
-    chart: dcgm-exporter
-    repoURL:  https://nvidia.github.io/dcgm-exporter/helm-charts
-    targetRevision: "*"
-    helm:
-      releaseName: gpu-metric
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: gpu-operator
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: gpu-metrics
+#  namespace: argocd
+#  finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+#spec:
+#  syncPolicy:
+#    syncOptions:
+#      - CreateNamespace=true
+#    automated:
+#      prune: true
+#      selfHeal: true
+#      allowEmpty: true
+#  project: default
+#  source:
+#    chart: dcgm-exporter
+#    repoURL:  https://nvidia.github.io/dcgm-exporter/helm-charts
+#    targetRevision: "*"
+#    helm:
+#      releaseName: gpu-metric
+#  destination:
+#    server: "https://kubernetes.default.svc"
+#    namespace: gpu-operator
