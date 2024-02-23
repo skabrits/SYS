@@ -5,6 +5,7 @@ metadata:
   namespace: istio-system
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 10000m
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   ingressClassName: nginx
   rules:
