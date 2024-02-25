@@ -20,15 +20,6 @@ spec:
     targetRevision: "3.1.4"
     helm:
       releaseName: mutating
-      parameters:
-      - name: "admissionController.replicas"
-        value: "3"
-      - name: "backgroundController.replicas"
-        value: "2"
-      - name: "cleanupController.replicas"
-        value: "2"
-      - name: "reportsController.replicas"
-        value: "2"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kyverno
