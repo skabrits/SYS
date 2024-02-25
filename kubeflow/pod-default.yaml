@@ -10,6 +10,7 @@ spec:
   selector:
     matchLabels:
       access-kf-pipeline: "true"
+  runtimeClassName: nvidia
   volumeMounts:
     - mountPath: /var/run/secrets/kubeflow/pipelines
       name: volume-kf-pipeline-token
