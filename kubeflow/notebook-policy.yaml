@@ -3,6 +3,7 @@ kind: ClusterPolicy
 metadata:
   name: modify-notebook-runtime
   annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     policies.kyverno.io/title: Modify notebook runtime
     policies.kyverno.io/category: Mutator, kubeflow
     policies.kyverno.io/severity: low
