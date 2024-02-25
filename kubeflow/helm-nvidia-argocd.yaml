@@ -38,6 +38,15 @@ spec:
       - name: "toolkit.env[3].value"
         value: "true"
         forceString: true
+      - name: "cdi.enabled"
+        value: "true"
+        forceString: true
+      - name: "cdi.default"
+        value: "true"
+        forceString: true
+      - name: "driver.enabled"
+        value: "false"
+        forceString: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: gpu-operator
