@@ -14,7 +14,6 @@ metadata:
     policies.kyverno.io/description: >-
       This policy adds runtime class NVIDIA to jupyter notebook requesting gpu.
 spec:
-  validationFailureAction: enforce
   rules:
     - name: check-paths
       match:
@@ -24,7 +23,7 @@ spec:
             - Notebook
       preconditions:
         all:
-        - key: "{{ request.object.spec.template.spec.containers[0].resources.limits.\"nvidia.com/gpu\" || -1 }}"
+        - key: "{{ request.object.spec.template.spec.containers[0].resources.limits.\"nvidia.com/gpu\" || '-1' }}"
           operator: GreaterThanOrEquals
           value: "0"
       mutate:
