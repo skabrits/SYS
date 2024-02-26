@@ -24,7 +24,7 @@ spec:
             - Notebook
       preconditions:
         all:
-        - key: "{{ request.object.spec.template.spec.containers[0].resources.limits.\"nvidia.com\"/gpu || -1 }}"
+        - key: "{{ request.object.spec.template.spec.containers[0].resources.limits.\"nvidia.com/gpu\" || -1 }}"
           operator: GreaterThanOrEquals
           value: 0
       mutate:
