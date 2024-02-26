@@ -26,7 +26,7 @@ spec:
         all:
         - key: "{{ request.object.spec.template.spec.containers[0].resources.limits.\"nvidia.com/gpu\" || -1 }}"
           operator: GreaterThanOrEquals
-          value: 0
+          value: "0"
       mutate:
         patchStrategicMerge:
           spec:
