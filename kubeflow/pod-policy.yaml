@@ -1,18 +1,18 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: modify-notebook-runtime
+  name: modify-pod-runtime
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    policies.kyverno.io/title: Modify notebook runtime
-    policies.kyverno.io/category: Mutator, kubeflow
+    policies.kyverno.io/title: Modify pod runtime
+    policies.kyverno.io/category: Mutator
     policies.kyverno.io/severity: low
-    policies.kyverno.io/subject: Notebook
+    policies.kyverno.io/subject: pod
     policies.kyverno.io/minversion: "1.11.4"
     kyverno.io/kyverno-version: "1.11.4"
     kyverno.io/kubernetes-version: "1.26"
     policies.kyverno.io/description: >-
-      This policy adds runtime class NVIDIA to jupyter notebook requesting gpu.
+      This policy adds runtime class NVIDIA to pods requesting gpu.
 spec:
   rules:
     - name: check-paths
@@ -20,16 +20,17 @@ spec:
         any:
         - resources:
             kinds:
-            - Notebook
+            - Pod
       preconditions:
         all:
-        - key: "{{ request.object.spec.template.spec.containers[0].resources.limits.\"nvidia.com/gpu\" || '-1' }}"
-          operator: GreaterThanOrEquals
-          value: "0"
+        - key: "{{ request.object.spec.containers[*].resources.limits.\"nvidia.com/gpu\" }}"
+          operator: AnyNotIn
+          value: ""
+        - key: "{{ request.object.spec.runtimeClassName || '' }}"
+          operator: Equals
+          value: ""
       skipBackgroundRequests: true
       mutate:
         patchStrategicMerge:
           spec:
-            template:
-              spec:
-                runtimeClassName: nvidia
+            runtimeClassName: nvidia
