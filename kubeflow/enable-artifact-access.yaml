@@ -1,14 +1,14 @@
-#apiVersion: security.istio.io/v1beta1
-#kind: AuthorizationPolicy
-#metadata:
-#  name: enable-artifact-access
-#  namespace: kubeflow-admin-user
-#spec:
-#  action: ALLOW
-#  rules:
-#  - from:
-#     - source:
-#        namespaces: ["kubeflow-admin-user","kubeflow"]
-#  selector:
-#   matchLabels:
-#     app: ml-pipeline-ui-artifact
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: enable-artifact-access
+  namespace: kubeflow-admin-user
+spec:
+  action: ALLOW
+  rules:
+  - from:
+     - source:
+        namespaces: ["kubeflow-admin-user","kubeflow"]
+  selector:
+   matchLabels:
+     app: ml-pipeline-ui-artifact
