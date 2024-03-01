@@ -3,7 +3,9 @@ kind: Ingress
 metadata:
   name: ingress-gra-http
   namespace: perform-system
-  # annotations:
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "3"
     # nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
