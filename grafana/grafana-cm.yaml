@@ -3,6 +3,10 @@ kind: ConfigMap
 metadata:
   name: example-grafana-datasource
   namespace: perform-system
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
      grafana_datasource: "1"
 data:
