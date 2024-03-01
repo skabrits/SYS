@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "4"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: kubeflow
+  namespace: argocd
+spec:
+  destination:
+    namespace: kubeflow
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      recurse: true
+    path: ./
+    repoURL: https://github.com/skabrits/kubeflow.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - ServerSideApply=true
