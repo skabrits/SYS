@@ -1,33 +1,33 @@
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name: kyverno
-#  namespace: argocd
-#  annotations:
-#    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-#  finalizers:
-#    - resources-finalizer.argocd.argoproj.io
-#spec:
-#  syncPolicy:
-#    syncOptions:
-#      - CreateNamespace=true
-#      - Replace=true
-#    automated:
-#      prune: true
-#      selfHeal: true
-#      allowEmpty: true
-#  project: default
-#  ignoreDifferences:
-#  - group: rbac.authorization.k8s.io
-#    kind: ClusterRole
-#    jsonPointers:
-#      - /rules
-#  source:
-#    chart: kyverno
-#    repoURL: https://kyverno.github.io/kyverno/
-#    targetRevision: "3.1.4"
-#    helm:
-#      releaseName: mutating
-#  destination:
-#    server: "https://kubernetes.default.svc"
-#    namespace: kyverno
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kyverno
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  ignoreDifferences:
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    jsonPointers:
+      - /rules
+  source:
+    chart: kyverno
+    repoURL: https://kyverno.github.io/kyverno/
+    targetRevision: "3.1.4"
+    helm:
+      releaseName: mutating
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kyverno
