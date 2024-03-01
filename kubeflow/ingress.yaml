@@ -6,6 +6,8 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 10000m
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   ingressClassName: nginx
   rules:
