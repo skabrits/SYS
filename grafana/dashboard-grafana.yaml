@@ -1,6 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     grafana_dashboard: "1"
   name: grafana-dash-sens
@@ -935,6 +939,10 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     grafana_dashboard: "1"
   name: grafana-dash-kube
@@ -24771,6 +24779,10 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     grafana_dashboard: "1"
   name: grafana-dash-nvid
