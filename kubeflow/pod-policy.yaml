@@ -4,6 +4,8 @@ metadata:
   name: modify-pod-runtime
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "5"
     policies.kyverno.io/title: Modify pod runtime
     policies.kyverno.io/category: Mutator
     policies.kyverno.io/severity: low
