@@ -10,6 +10,11 @@ metadata:
   name: kubeflow
   namespace: argocd
 spec:
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+      jqPathExpressions:
+      - .webhooks[].clientConfig.caBundle
   destination:
     namespace: kubeflow
     server: https://kubernetes.default.svc
