@@ -13,12 +13,19 @@ spec:
     - group: admissionregistration.k8s.io
       kind: MutatingWebhookConfiguration
       jsonPointers:
-      - /spec
+      - /webhooks
     - group: admissionregistration.k8s.io
       kind: ValidatingWebhookConfiguration
       jsonPointers:
-      - /spec
-      
+      - /webhooks
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      jsonPointers:
+      - /rules
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      jsonPointers:
+      - /spec/conversion/webhook/clientConfig/caBundle
   destination:
     namespace: kubeflow
     server: https://kubernetes.default.svc
