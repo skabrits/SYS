@@ -7,6 +7,12 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: 10000m
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "5"
+    cert-manager.io/cluster-issuer: Issuer
+    nginx.ingress.kubernetes.io/proxy-ssl-verify: "false"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
   rules:
@@ -19,3 +25,7 @@ spec:
             name: istio-ingressgateway
             port:
               number: 80
+  tls:
+  - hosts:
+    - skabrits.tplinkdns.com
+    secretName: kubeflow-cert
