@@ -99,25 +99,9 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "node_hwmon_temp_celsius"
+                  "options": "critical temp"
                 },
                 "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "${__field.labels[\"sensor\"]}"
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_coretemp_0\",instance=\"$node\",job=\"$job\"})"
-                },
-                "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "critical temp"
-                  },
                   {
                     "id": "color",
                     "value": {
@@ -129,13 +113,9 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "90"
+                  "options": "warning temp"
                 },
                 "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "warning temp"
-                  },
                   {
                     "id": "color",
                     "value": {
@@ -176,7 +156,7 @@ data:
               "editorMode": "code",
               "expr": "node_hwmon_temp_celsius{chip=\"platform_coretemp_0\",instance=\"$node\",job=\"$job\"}",
               "intervalFactor": 2,
-              "legendFormat": "__auto",
+              "legendFormat": "{{sensor}}",
               "range": true,
               "refId": "A",
               "step": 10
@@ -274,25 +254,9 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "node_hwmon_temp_celsius"
+                  "options": "critical temp"
                 },
                 "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "${__field.labels[\"sensor\"]}"
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "avg(node_hwmon_temp_crit_celsius{chip=~\"nvme_nvme0\",instance=\"$node\",job=\"$job\"})"
-                },
-                "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "critical temp"
-                  },
                   {
                     "id": "color",
                     "value": {
@@ -333,7 +297,7 @@ data:
               "editorMode": "code",
               "expr": "node_hwmon_temp_celsius{chip=~\"nvme_nvme0\",instance=\"$node\",job=\"$job\"}",
               "intervalFactor": 2,
-              "legendFormat": "{{temptype}}",
+              "legendFormat": "{{sensor}}",
               "range": true,
               "refId": "A",
               "step": 10
@@ -347,7 +311,7 @@ data:
               "expr": "avg(node_hwmon_temp_crit_celsius{chip=~\"nvme_nvme0\",instance=\"$node\",job=\"$job\"})",
               "hide": false,
               "instant": false,
-              "legendFormat": "__auto",
+              "legendFormat": "critical temp",
               "range": true,
               "refId": "B"
             }
@@ -414,32 +378,6 @@ data:
               "unit": "short",
               "unitScale": true
             },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "node_hwmon_fan_rpm"
-                },
-                "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "${__field.labels[\"sensor\"]}"
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "(deriv(avg(node_hwmon_temp_celsius{chip=\"platform_coretemp_0\",instance=\"$node\",job=\"$job\"})[2m:10s]))*30000"
-                },
-                "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "temp deriv"
-                  }
-                ]
-              }
-            ]
           },
           "gridPos": {
             "h": 7,
@@ -471,7 +409,7 @@ data:
               "editorMode": "code",
               "expr": "node_hwmon_fan_rpm > 0",
               "intervalFactor": 2,
-              "legendFormat": "{{fantype}}",
+              "legendFormat": "{{sensor}}",
               "metric": "sensor_lm_fan_speed_rpm",
               "range": true,
               "refId": "A",
@@ -486,7 +424,7 @@ data:
               "expr": "(deriv(avg(node_hwmon_temp_celsius{chip=\"platform_coretemp_0\",instance=\"$node\",job=\"$job\"})[2m:10s]))*30000",
               "hide": false,
               "instant": false,
-              "legendFormat": "__auto",
+              "legendFormat": "temp deriv",
               "range": true,
               "refId": "B"
             }
@@ -557,25 +495,9 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "node_hwmon_temp_celsius"
+                  "options": "critical temp"
                 },
                 "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "${__field.labels[\"sensor\"]}"
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_nct6775_2592\",instance=\"$node\",job=\"$job\"})"
-                },
-                "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "critical temp"
-                  },
                   {
                     "id": "color",
                     "value": {
@@ -587,13 +509,9 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "90"
+                  "options": "warning temp"
                 },
                 "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "warning temp"
-                  },
                   {
                     "id": "color",
                     "value": {
@@ -634,7 +552,7 @@ data:
               "editorMode": "code",
               "expr": "node_hwmon_temp_celsius{chip=\"platform_nct6775_2592\",instance=\"$node\",job=\"$job\"} < 100 > 10",
               "intervalFactor": 2,
-              "legendFormat": "__auto",
+              "legendFormat": "{{sensor}}",
               "range": true,
               "refId": "A",
               "step": 10
@@ -648,7 +566,7 @@ data:
               "expr": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_nct6775_2592\",instance=\"$node\",job=\"$job\"})",
               "hide": false,
               "instant": false,
-              "legendFormat": "__auto",
+              "legendFormat": "critical temp",
               "range": true,
               "refId": "B"
             },
@@ -661,7 +579,7 @@ data:
               "expr": "90",
               "hide": false,
               "instant": false,
-              "legendFormat": "__auto",
+              "legendFormat": "warning temp",
               "range": true,
               "refId": "C"
             }
@@ -731,25 +649,9 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "node_hwmon_temp_celsius"
+                  "options": "critical temp"
                 },
                 "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "${__field.labels[\"sensor\"]}, ${__field.labels[\"chip\"]}"
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "avg(node_hwmon_temp_crit_celsius{chip=~\"thermal_thermal_zone.*\",instance=\"$node\",job=\"$job\"})"
-                },
-                "properties": [
-                  {
-                    "id": "displayName",
-                    "value": "critical temp"
-                  },
                   {
                     "id": "color",
                     "value": {
@@ -790,7 +692,7 @@ data:
               "editorMode": "code",
               "expr": "node_hwmon_temp_celsius{chip=~\"thermal_thermal_zone.*\",instance=\"$node\",job=\"$job\"}",
               "intervalFactor": 2,
-              "legendFormat": "__auto",
+              "legendFormat": "{{sensor}}, {{chip}}",
               "range": true,
               "refId": "A",
               "step": 10
@@ -804,7 +706,7 @@ data:
               "expr": "avg(node_hwmon_temp_crit_celsius{chip=~\"thermal_thermal_zone.*\",instance=\"$node\",job=\"$job\"})",
               "hide": false,
               "instant": false,
-              "legendFormat": "__auto",
+              "legendFormat": "critical temp",
               "range": true,
               "refId": "B"
             }
