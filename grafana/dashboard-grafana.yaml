@@ -170,7 +170,7 @@ data:
               "expr": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_coretemp_0\",instance=\"$node\",job=\"$job\"})",
               "hide": false,
               "instant": false,
-              "legendFormat": "__auto",
+              "legendFormat": "critical temp",
               "range": true,
               "refId": "B"
             },
@@ -183,7 +183,7 @@ data:
               "expr": "90",
               "hide": false,
               "instant": false,
-              "legendFormat": "__auto",
+              "legendFormat": "warning temp",
               "range": true,
               "refId": "C"
             }
