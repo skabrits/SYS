@@ -6,7 +6,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     grafana_dashboard: "1"
-  name: grafana-dash-sens
+  name: grafana-dash-sensors
   namespace: perform-system
 data:
   sensor.json: |-
