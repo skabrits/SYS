@@ -111,7 +111,7 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_coretemp_0\"})"
+                  "options": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_coretemp_0\",instance=\"$node\",job=\"$job\"})"
                 },
                 "properties": [
                   {
@@ -174,7 +174,7 @@ data:
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "node_hwmon_temp_celsius{chip=\"platform_coretemp_0\"}",
+              "expr": "node_hwmon_temp_celsius{chip=\"platform_coretemp_0\",instance=\"$node\",job=\"$job\"}",
               "intervalFactor": 2,
               "legendFormat": "__auto",
               "range": true,
@@ -187,7 +187,7 @@ data:
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_coretemp_0\"})",
+              "expr": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_coretemp_0\",instance=\"$node\",job=\"$job\"})",
               "hide": false,
               "instant": false,
               "legendFormat": "__auto",
@@ -286,7 +286,7 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "avg(node_hwmon_temp_crit_celsius{chip=~\"nvme_nvme0\"})"
+                  "options": "avg(node_hwmon_temp_crit_celsius{chip=~\"nvme_nvme0\",instance=\"$node\",job=\"$job\"})"
                 },
                 "properties": [
                   {
@@ -331,7 +331,7 @@ data:
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "node_hwmon_temp_celsius{chip=~\"nvme_nvme0\"}",
+              "expr": "node_hwmon_temp_celsius{chip=~\"nvme_nvme0\",instance=\"$node\",job=\"$job\"}",
               "intervalFactor": 2,
               "legendFormat": "{{temptype}}",
               "range": true,
@@ -344,7 +344,7 @@ data:
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "avg(node_hwmon_temp_crit_celsius{chip=~\"nvme_nvme0\"})",
+              "expr": "avg(node_hwmon_temp_crit_celsius{chip=~\"nvme_nvme0\",instance=\"$node\",job=\"$job\"})",
               "hide": false,
               "instant": false,
               "legendFormat": "__auto",
@@ -430,7 +430,7 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "(deriv(avg(node_hwmon_temp_celsius{chip=\"platform_coretemp_0\"})[2m:10s]))*30000"
+                  "options": "(deriv(avg(node_hwmon_temp_celsius{chip=\"platform_coretemp_0\",instance=\"$node\",job=\"$job\"})[2m:10s]))*30000"
                 },
                 "properties": [
                   {
@@ -483,7 +483,7 @@ data:
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "(deriv(avg(node_hwmon_temp_celsius{chip=\"platform_coretemp_0\"})[2m:10s]))*30000",
+              "expr": "(deriv(avg(node_hwmon_temp_celsius{chip=\"platform_coretemp_0\",instance=\"$node\",job=\"$job\"})[2m:10s]))*30000",
               "hide": false,
               "instant": false,
               "legendFormat": "__auto",
@@ -569,7 +569,7 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_nct6775_2592\"})"
+                  "options": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_nct6775_2592\",instance=\"$node\",job=\"$job\"})"
                 },
                 "properties": [
                   {
@@ -632,7 +632,7 @@ data:
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "node_hwmon_temp_celsius{chip=\"platform_nct6775_2592\"} < 100 > 10",
+              "expr": "node_hwmon_temp_celsius{chip=\"platform_nct6775_2592\",instance=\"$node\",job=\"$job\"} < 100 > 10",
               "intervalFactor": 2,
               "legendFormat": "__auto",
               "range": true,
@@ -645,7 +645,7 @@ data:
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_nct6775_2592\"})",
+              "expr": "avg(node_hwmon_temp_crit_celsius{chip=\"platform_nct6775_2592\",instance=\"$node\",job=\"$job\"})",
               "hide": false,
               "instant": false,
               "legendFormat": "__auto",
@@ -743,7 +743,7 @@ data:
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "avg(node_hwmon_temp_crit_celsius{chip=~\"thermal_thermal_zone.*\"})"
+                  "options": "avg(node_hwmon_temp_crit_celsius{chip=~\"thermal_thermal_zone.*\",instance=\"$node\",job=\"$job\"})"
                 },
                 "properties": [
                   {
@@ -788,7 +788,7 @@ data:
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "node_hwmon_temp_celsius{chip=~\"thermal_thermal_zone.*\"}",
+              "expr": "node_hwmon_temp_celsius{chip=~\"thermal_thermal_zone.*\",instance=\"$node\",job=\"$job\"}",
               "intervalFactor": 2,
               "legendFormat": "__auto",
               "range": true,
@@ -801,7 +801,7 @@ data:
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "avg(node_hwmon_temp_crit_celsius{chip=~\"thermal_thermal_zone.*\"})",
+              "expr": "avg(node_hwmon_temp_crit_celsius{chip=~\"thermal_thermal_zone.*\",instance=\"$node\",job=\"$job\"})",
               "hide": false,
               "instant": false,
               "legendFormat": "__auto",
@@ -835,6 +835,66 @@ data:
             "regex": "",
             "skipUrlSync": false,
             "type": "datasource"
+          },
+          {
+            "current": {
+              "selected": false,
+              "text": "kubernetes-service-endpoints",
+              "value": "kubernetes-service-endpoints"
+            },
+            "datasource": {   
+              "type": "prometheus",
+              "uid": "PBFA97CFB590B2093"
+            },
+            "definition": "",
+            "hide": 0,
+            "includeAll": false,
+            "label": "Job",
+            "multi": false,
+            "name": "job",
+            "options": [],
+            "query": {
+              "query": "label_values(node_uname_info, job)",
+              "refId": "Prometheus-job-Variable-Query"
+            },
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 1,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false
+          },
+          {
+            "current": {
+              "selected": false,
+              "text": "192.168.0.105:9100",
+              "value": "192.168.0.105:9100"
+            },
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PBFA97CFB590B2093"
+            },
+            "definition": "label_values(node_uname_info{job=\"$job\"}, instance)",
+            "hide": 0,
+            "includeAll": false,
+            "label": "Host",
+            "multi": false,
+            "name": "node",
+            "options": [],
+            "query": {
+              "query": "label_values(node_uname_info{job=\"$job\"}, instance)",
+              "refId": "Prometheus-node-Variable-Query"
+            },
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 1,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false
           },
           {
             "auto": false,
