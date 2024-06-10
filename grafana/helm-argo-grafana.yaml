@@ -33,6 +33,8 @@ spec:
         value: "longhorn"
       - name: "persistence.enabled"
         value: "true"
+      - name: "persistence.accessModes[0]"
+        value: "ReadWriteMany"
       - name: "grafana\\.ini.server.root_url"
         value: "%(protocol)s://%(domain)s/grafana/" # "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
       - name: "grafana\\.ini.server.domain"
