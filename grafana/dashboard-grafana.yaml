@@ -26649,7 +26649,7 @@ data:
                 "type": "prometheus",
                 "uid": "PBFA97CFB590B2093"
               },
-              "expr": "sum(node_filesystem_size_bytes - node_filesystem_free_bytes)/sum(node_filesystem_size_bytes)",
+              "expr": "sum(node_filesystem_size_bytes{node!~\"user.*-desktop-.*|master-01\", mountpoint=\"/\"} - node_filesystem_free_bytes{node!~\"user.*-desktop-.*|master-01\", mountpoint=\"/\"})",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "Used Disk Space",
@@ -26891,7 +26891,7 @@ data:
                 "type": "prometheus",
                 "uid": "PBFA97CFB590B2093"
               },
-              "expr": "node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes",
+              "expr": "node_memory_MemTotal_bytes{node!~\"user.*-desktop-.*|master-01\"} - node_memory_MemAvailable_bytes{node!~\"user.*-desktop-.*|master-01\"}",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "Unavailable Memory",
