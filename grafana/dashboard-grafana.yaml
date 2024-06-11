@@ -26500,7 +26500,7 @@ data:
                 "type": "prometheus",
                 "uid": "PBFA97CFB590B2093"
               },
-              "expr": "sum(node_load1{node!~"user.*-desktop-.*|master-01"}) / sum(machine_cpu_cores{instance!~"user.*-desktop-.*|master-01"})",
+              "expr": "sum(node_load1{node!~\"user.*-desktop-.*|master-01\"}) / sum(machine_cpu_cores{instance!~\"user.*-desktop-.*|master-01\"})",
               "intervalFactor": 2,
               "refId": "A",
               "step": 600
