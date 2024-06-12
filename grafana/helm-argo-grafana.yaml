@@ -42,7 +42,7 @@ spec:
       - name: "grafana\\.ini.server.serve_from_sub_path"
         value: "true"
       - name: "env.GF_PANELS_DISABLE_SANITIZE_HTML"
-      - value: "true"
+        value: "true"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: perform-system
