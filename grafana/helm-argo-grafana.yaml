@@ -43,6 +43,8 @@ spec:
         value: "true"
       - name: "env.GF_PANELS_DISABLE_SANITIZE_HTML"
         value: "true"
+      - name: "env.GF_DASHBOARDS_MIN_REFRESH_INTERVAL"
+        value: "0.001s"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: perform-system
