@@ -45,6 +45,10 @@ spec:
         value: "true"
       - name: "env.GF_DASHBOARDS_MIN_REFRESH_INTERVAL"
         value: "0.001s"
+      - name: "plugins[0]"
+        value: "marcusolsson-dynamictext-panel"
+      - name: "plugins[1]"
+        value: "yesoreyeram-infinity-datasource"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: perform-system
