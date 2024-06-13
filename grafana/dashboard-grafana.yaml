@@ -28281,3 +28281,148 @@ data:
       "version": 2,
       "weekStart": ""
     }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  labels:
+    grafana_dashboard: "1"
+  name: grafana-dash-video
+  namespace: perform-system
+data:
+  video.json: |-
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": {
+              "type": "grafana",
+              "uid": "-- Grafana --"
+            },
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": true,
+      "fiscalYearStartMonth": 0,
+      "graphTooltip": 0,
+      "id": 29,
+      "links": [],
+      "liveNow": false,
+      "panels": [
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "c4743bbf-2922-4e1d-ba29-5f975b8571c0"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 9,
+            "x": 0,
+            "y": 0
+          },
+          "id": 1,
+          "options": {
+            "afterRender": "",
+            "content": "<img src=\"data:image/jpeg;base64,{{{@root.A}}}\"/>",
+            "defaultContent": "The query didn't return any results.",
+            "editor": {
+              "format": "auto",
+              "language": "html"
+            },
+            "editors": [],
+            "externalStyles": [],
+            "helpers": "",
+            "renderMode": "everyRow",
+            "styles": "",
+            "wrap": false
+          },
+          "pluginVersion": "5.0.0",
+          "targets": [
+            {
+              "columns": [],
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "c4743bbf-2922-4e1d-ba29-5f975b8571c0"
+              },
+              "filters": [],
+              "format": "as-is",
+              "global_query_id": "",
+              "parser": "backend",
+              "refId": "A",
+              "root_selector": "",
+              "source": "url",
+              "type": "json",
+              "url": "http://192.168.0.102:5000/",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "Panel Title",
+          "type": "marcusolsson-dynamictext-panel"
+        }
+      ],
+      "refresh": "auto",
+      "schemaVersion": 39,
+      "tags": [],
+      "templating": {
+        "list": []
+      },
+      "time": {
+        "from": "now-5m",
+        "to": "now"
+      },
+      "timepicker": {
+        "refresh_intervals": [
+          "30ms",
+          "100ms",
+          "150ms",
+          "300ms",
+          "500ms",
+          "1s",
+          "5s",
+          "10s",
+          "30s",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "1h",
+          "2h",
+          "1d"
+        ]
+      },
+      "timezone": "",
+      "title": "home video",
+      "uid": "a8248ab7-a7a7-485a-84fa-8e552bf9fb99",
+      "version": 6,
+      "weekStart": ""
+    }
