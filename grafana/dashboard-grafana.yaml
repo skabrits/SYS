@@ -28351,7 +28351,7 @@ data:
           "options": {
             "afterRender": "function updateDateTime() {\r\n  // create a new `Date` object\r\n  const now = new Date();\r\n\r\n  // get the current date and time as a string\r\n  const currentDateTime = now.toLocaleString();\r\n\r\n  // update the `textContent` property of the `span` element with the `id` of `datetime`\r\n  document.querySelector('#datetime').textContent = currentDateTime;\r\n}\r\nupdateDateTime();\r\n",
             "content": "<div>\r\n<img src=\"data:image/jpeg;base64,{{{@root.A}}}\"/>\r\n<span style=\"position: absolute; bottom: 8px; left: 16px;\" id=\"datetime\"></span>\r\n</div>",
-            "defaultContent": \"The query didn't return any results.\r\n<span style="position: absolute; bottom: 8px; left: 16px;\" id=\"datetime\"></span>",
+            "defaultContent": "The query didn't return any results.\r\n<span style=\"position: absolute; bottom: 8px; left: 16px;\" id=\"datetime\"></span>",
             "editor": {
               "format": "auto",
               "language": "html"
