@@ -28379,7 +28379,7 @@ data:
               "root_selector": "",
               "source": "url",
               "type": "json",
-              "url": "http://192.168.0.102:5000/",
+              "url": "http://$instance:5000/",
               "url_options": {
                 "data": "",
                 "method": "GET"
@@ -28394,7 +28394,98 @@ data:
       "schemaVersion": 39,
       "tags": [],
       "templating": {
-        "list": []
+        "list": [
+          {
+            "current": {
+              "selected": false,
+              "text": "kubernetes-service-endpoints",
+              "value": "kubernetes-service-endpoints"
+            },
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PBFA97CFB590B2093"
+            },
+            "definition": "",
+            "hide": 0,
+            "includeAll": false,
+            "label": "Job",
+            "multi": false,
+            "name": "job",
+            "options": [],
+            "query": {
+              "query": "label_values(node_uname_info, job)",
+              "refId": "Prometheus-job-Variable-Query"
+            },
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 1,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false
+          },
+          {
+            "current": {
+              "selected": false,
+              "text": "master-01",
+              "value": "master-01"
+            },
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PBFA97CFB590B2093"
+            },
+            "definition": "label_values(node_uname_info{job=\"$job\"}, node)",
+            "hide": 0,
+            "includeAll": false,
+            "label": "Host",
+            "multi": false,
+            "name": "node",
+            "options": [],
+            "query": {
+              "query": "label_values(node_uname_info{job=\"$job\"}, node)",
+              "refId": "Prometheus-node-Variable-Query"
+            },
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 1,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false
+          },
+          {
+            "current": {
+              "selected": false,
+              "text": "192.168.0.106",
+              "value": "192.168.0.106"
+            },
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PBFA97CFB590B2093"
+            },
+            "definition": "label_values(node_uname_info{job=\"$job\", node=\"$node\"}, instance)",
+            "hide": 0,
+            "includeAll": false,
+            "label": "IP",
+            "multi": false,
+            "name": "instance",
+            "options": [],
+            "query": {
+              "query": "label_values(node_uname_info{job=\"$job\", node=\"$node\"}, instance)",
+              "refId": "Prometheus-instance-Variable-Query"
+            },
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 1,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false
+          }
+        ]
       },
       "time": {
         "from": "now-5m",
