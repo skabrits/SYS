@@ -20,10 +20,9 @@ data:
       isDefault: true
     - name: yesoreyeram-infinity-datasource
       type: yesoreyeram-infinity-datasource
+      uid: c4743bbf-2922-4e1d-ba29-5f975b8571c0
       url: ""
       orgId: 1
       basicAuth: false
       basicAuthUser: ""
       isDefault: false
-      jsonData:
-        global_queries: []
