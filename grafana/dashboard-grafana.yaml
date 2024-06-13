@@ -28379,7 +28379,7 @@ data:
               "root_selector": "",
               "source": "url",
               "type": "json",
-              "url": "http://$instance:5000/",
+              "url": "http://$instance:9110/",
               "url_options": {
                 "data": "",
                 "method": "GET"
