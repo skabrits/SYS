@@ -13,8 +13,8 @@ spec:
 
   resourceQuotaSpec:
    hard:
-     cpu: "2"
-     memory: 4Gi
+     cpu: "6"
+     memory: 8Gi
      requests.nvidia.com/gpu: "1"
      persistentvolumeclaims: "5"
      requests.storage: "40Gi"
