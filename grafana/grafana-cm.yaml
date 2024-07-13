@@ -26,3 +26,123 @@ data:
       basicAuth: false
       basicAuthUser: ""
       isDefault: false
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-alerting
+  namespace: perform-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  labels:
+    grafana_alert: "1"
+data:
+  grafana-alert.yaml: |-
+    apiVersion: 1
+    groups:
+        - orgId: 1
+          name: HighPriority
+          folder: cluster_alerts
+          interval: 1m
+          rules:
+            - uid: d7c4302b-fae5-4650-9b5a-741295e66e77
+              title: Temperature warning
+              condition: Temperature above 90
+              data:
+                - refId: Temperature
+                  relativeTimeRange:
+                    from: 600
+                    to: 0
+                  datasourceUid: PBFA97CFB590B2093
+                  model:
+                    editorMode: code
+                    expr: node_hwmon_temp_celsius{chip="platform_nct6775_2592", sensor="temp7"}
+                    instant: true
+                    intervalMs: 1000
+                    legendFormat: '{{node}}'
+                    maxDataPoints: 43200
+                    range: false
+                    refId: Temperature
+                - refId: Temperature above 90
+                  relativeTimeRange:
+                    from: 600
+                    to: 0
+                  datasourceUid: __expr__
+                  model:
+                    conditions:
+                        - evaluator:
+                            params:
+                                - 90
+                            type: gt
+                          operator:
+                            type: and
+                          query:
+                            params:
+                                - C
+                          reducer:
+                            params: []
+                            type: last
+                          type: query
+                    datasource:
+                        type: __expr__
+                        uid: __expr__
+                    expression: Temperature
+                    intervalMs: 1000
+                    maxDataPoints: 43200
+                    refId: Temperature above 90
+                    type: threshold
+              dashboardUid: b0e47bb7-fbec-46e0-909f-2c7c3cb79dc8
+              panelId: 1
+              noDataState: NoData
+              execErrState: Error
+              for: 3m
+              annotations:
+                __dashboardUid__: b0e47bb7-fbec-46e0-909f-2c7c3cb79dc8
+                __panelId__: "1"
+                summary: Temperature exceeded
+              labels:
+                severity: critical
+                type: cluster_wide
+              isPaused: false
+    ---
+    apiVersion: 1
+    policies:
+        - orgId: 1
+          receiver: grafana-default-email
+          group_by:
+            - grafana_folder
+            - alertname
+          routes:
+            - receiver: TG report
+              object_matchers:
+                - - severity
+                  - =
+                  - critical
+                - - type
+                  - =
+                  - cluster_wide
+    ---
+    apiVersion: 1
+    contactPoints:
+        - orgId: 1
+          name: TG report
+          receivers:
+            - uid: c028987b-0e7a-495f-86a9-3cbaf4cdc84a
+              type: telegram
+              settings:
+                bottoken: <example:token>
+                chatid: "0000000"
+                disable_notification: false
+                disable_web_page_preview: false
+                protect_content: false
+              disableResolveMessage: true
+        - orgId: 1
+          name: email receiver
+          receivers:
+            - uid: dbc12cb3-f009-4aa3-bdb4-f7bd1f18ef37
+              type: email
+              settings:
+                addresses: <example@email.com>
+              disableResolveMessage: false
+
