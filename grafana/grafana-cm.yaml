@@ -145,4 +145,67 @@ data:
               settings:
                 addresses: <example@email.com>
               disableResolveMessage: false
-
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-alerting-policy
+  namespace: perform-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  labels:
+    grafana_alert: "1"
+data:
+  grafana-alert.yaml: |-
+    apiVersion: 1
+    policies:
+        - orgId: 1
+          receiver: grafana-default-email
+          group_by:
+            - grafana_folder
+            - alertname
+          routes:
+            - receiver: TG report
+              object_matchers:
+                - - severity
+                  - =
+                  - critical
+                - - type
+                  - =
+                  - cluster_wide
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-alerting-cp
+  namespace: perform-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  labels:
+    grafana_alert: "1"
+data:
+  grafana-alert.yaml: |-
+    apiVersion: 1
+    contactPoints:
+        - orgId: 1
+          name: TG report
+          receivers:
+            - uid: c028987b-0e7a-495f-86a9-3cbaf4cdc84a
+              type: telegram
+              settings:
+                bottoken: <example:token>
+                chatid: "0000000"
+                disable_notification: false
+                disable_web_page_preview: false
+                protect_content: false
+              disableResolveMessage: true
+        - orgId: 1
+          name: email receiver
+          receivers:
+            - uid: dbc12cb3-f009-4aa3-bdb4-f7bd1f18ef37
+              type: email
+              settings:
+                addresses: <example@email.com>
+              disableResolveMessage: false
