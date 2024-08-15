@@ -5,8 +5,6 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
-    argocd.argoproj.io/sync-options: Prune=false
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -53,6 +51,10 @@ spec:
         value: "marcusolsson-dynamictext-panel"
       - name: "plugins[1]"
         value: "yesoreyeram-infinity-datasource"
+      - name: "annotations.argocd\\.argoproj\\.io/sync-options"
+        value: "Prune=false"
+      - name: "annotations.argocd\\.argoproj\\.io/compare-options"
+        value: "IgnoreExtraneous"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: perform-system
