@@ -1,25 +1,25 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: chemistry
-#   namespace: argocd
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io
-# spec:
-#   syncPolicy:
-#     syncOptions:
-#       - CreateNamespace=true
-#     automated:
-#       prune: true
-#       selfHeal: true
-#       allowEmpty: true
-#   project: default
-#   source:
-#     path: chemistry-pack/
-#     repoURL: https://github.com/skabrits/chemistry.git
-#     targetRevision: main
-#     helm:
-#       releaseName: demo
-#   destination:
-#     server: "https://kubernetes.default.svc"
-#     namespace: chemistry
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: chemistry
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    path: chemistry-pack/
+    repoURL: https://github.com/skabrits/chemistry.git
+    targetRevision: main
+    helm:
+      releaseName: demo
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: chemistry
