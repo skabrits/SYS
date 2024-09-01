@@ -20,6 +20,9 @@ spec:
     targetRevision: main
     helm:
       releaseName: demo
+      parameters:
+      - name: "resources.requests.cpu"
+        value: 6000m
   destination:
     server: "https://kubernetes.default.svc"
     namespace: chemistry
