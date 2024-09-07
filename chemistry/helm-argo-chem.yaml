@@ -27,11 +27,11 @@ spec:
         value: 20Gi
       - name: "ingress.hosts.paths.path"
         value: "/wolfram/"
-      valueFiles:
-      - $values/deploy/wolfram/values.yaml
-  - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
-    targetRevision: main
-    ref: values
+  #     valueFiles:
+  #     - $values/deploy/wolfram/values.yaml
+  # - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+  #   targetRevision: main
+  #   ref: values
   destination:
     server: "https://kubernetes.default.svc"
     namespace: wolfram-math
