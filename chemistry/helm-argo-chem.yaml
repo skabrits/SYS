@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: chemistry
+  name: wolfram-math
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -19,10 +19,12 @@ spec:
     repoURL: https://github.com/skabrits/chemistry.git
     targetRevision: main
     helm:
-      releaseName: demo
+      releaseName: wolfram-math
       parameters:
       - name: "resources.requests.cpu"
-        value: 6000m
+        value: 8000m
+      - name: "pvc.size"
+        value: 20Gi
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: chemistry
+    namespace: wolfram-math
