@@ -14,8 +14,8 @@ spec:
       selfHeal: true
       allowEmpty: true
   project: default
-  source:
-    path: chemistry-pack/
+  sources:
+  - path: chemistry-pack/
     repoURL: https://github.com/skabrits/chemistry.git
     targetRevision: main
     helm:
@@ -27,6 +27,11 @@ spec:
         value: 20Gi
       - name: "ingress.hosts.paths.path"
         value: "/wolfram/"
+      valueFiles:
+      - $values/deploy/wolfram/values.yaml
+  - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+    targetRevision: main
+    ref: values
   destination:
     server: "https://kubernetes.default.svc"
     namespace: wolfram-math
