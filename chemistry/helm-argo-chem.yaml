@@ -27,6 +27,8 @@ spec:
         value: 20Gi
       - name: "ingress.hosts[0].paths[0].path"
         value: "/wolfram/"
+      - name: "ingress.hosts[0].paths[0].pathType"
+        value: "ImplementationSpecific"
       valueFiles:
       - $values/deploy/wolfram/values.yaml
   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
