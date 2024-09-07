@@ -25,6 +25,8 @@ spec:
         value: 8000m
       - name: "pvc.size"
         value: 20Gi
+      - name: "ingress.hosts.paths.path"
+        value: "/wolfram/"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: wolfram-math
