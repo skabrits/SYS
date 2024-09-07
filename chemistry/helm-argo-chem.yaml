@@ -25,7 +25,7 @@ spec:
         value: 8000m
       - name: "pvc.size"
         value: 20Gi
-      - name: "ingress.hosts.paths.path"
+      - name: "ingress.hosts[0].paths[0].path"
         value: "/wolfram/"
   #     valueFiles:
   #     - $values/deploy/wolfram/values.yaml
