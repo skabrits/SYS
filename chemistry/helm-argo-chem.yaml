@@ -1,39 +1,39 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: wolfram-math
-#   namespace: argocd
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io
-# spec:
-#   syncPolicy:
-#     syncOptions:
-#       - CreateNamespace=true
-#     automated:
-#       prune: true
-#       selfHeal: true
-#       allowEmpty: true
-#   project: default
-#   sources:
-#   - path: chemistry-pack/
-#     repoURL: https://github.com/skabrits/chemistry.git
-#     targetRevision: main
-#     helm:
-#       releaseName: wolfram-math
-#       parameters:
-#       - name: "resources.requests.cpu"
-#         value: 8000m
-#       - name: "pvc.size"
-#         value: 20Gi
-#       - name: "ingress.hosts[0].paths[0].path"
-#         value: "/wolfram/"
-#       - name: "ingress.hosts[0].paths[0].pathType"
-#         value: "ImplementationSpecific"
-#       valueFiles:
-#       - $values/deploy/wolfram/values.yaml
-#   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
-#     targetRevision: main
-#     ref: values
-#   destination:
-#     server: "https://kubernetes.default.svc"
-#     namespace: wolfram-math
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: chemistry
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  sources:
+  - path: chemistry-pack/
+    repoURL: https://github.com/skabrits/chemistry.git
+    targetRevision: main
+    helm:
+      releaseName: slava
+      parameters:
+      - name: "resources.requests.cpu"
+        value: 8000m
+      - name: "pvc.size"
+        value: 20Gi
+      - name: "ingress.hosts[0].paths[0].path"
+        value: "/chemistry/"
+      - name: "ingress.hosts[0].paths[0].pathType"
+        value: "ImplementationSpecific"
+      valueFiles:
+      - $values/deploy/chemistry/values.yaml
+  - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: chemistry
