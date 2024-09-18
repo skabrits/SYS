@@ -22,7 +22,7 @@ spec:
       releaseName: slava
       parameters:
       - name: "resources.requests.cpu"
-        value: 8000m
+        value: 6000m
       - name: "pvc.size"
         value: 20Gi
       - name: "ingress.hosts[0].paths[0].path"
