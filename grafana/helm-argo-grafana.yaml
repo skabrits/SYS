@@ -19,7 +19,7 @@ spec:
   source:
     chart: grafana
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: "7.3.1"
+    targetRevision: "8.5.1"
     helm:
       releaseName: grafana
       parameters:
@@ -55,6 +55,8 @@ spec:
         value: "Prune=false"
       - name: "annotations.argocd\\.argoproj\\.io/compare-options"
         value: "IgnoreExtraneous"
+      - name: "admin.existingSecret"
+        value: "grafana-init-secret"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: perform-system
