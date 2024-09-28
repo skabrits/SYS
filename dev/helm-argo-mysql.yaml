@@ -25,6 +25,8 @@ spec:
       parameters:
       - name: "auth.rootPassword"
         value: "test-123"
+      - name: "primary.service.type"
+        value: "LoadBalancer"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: dev
