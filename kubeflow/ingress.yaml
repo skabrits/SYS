@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: 10000m
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "5"
-    cert-manager.io/cluster-issuer: Issuer
+    cert-manager.io/cluster-issuer: letsencrypt-cluster
     nginx.ingress.kubernetes.io/proxy-ssl-verify: "false"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
