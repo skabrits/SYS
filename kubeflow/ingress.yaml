@@ -16,16 +16,16 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  # - host: skabrits.tplinkdns.com
-  #   http:
-  #     paths:
-  #     - path: /
-  #       pathType: Prefix
-  #       backend:
-  #         service:
-  #           name: istio-ingressgateway
-  #           port:
-  #             number: 80
+  - host: skabrits.tplinkdns.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: istio-ingressgateway
+            port:
+              number: 80
   - http:
       paths:
       - path: /
@@ -35,7 +35,7 @@ spec:
             name: istio-ingressgateway
             port:
               number: 80
-  tls:
-  - hosts:
-    - skabrits.tplinkdns.com
-    secretName: kubeflow-cert
+  # tls:
+  # - hosts:
+  #   - skabrits.tplinkdns.com
+  #   secretName: kubeflow-cert
