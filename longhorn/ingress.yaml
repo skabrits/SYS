@@ -28,6 +28,15 @@ spec:
               number: 80
         pathType: ImplementationSpecific
         path: /longhorn(/|$)(.*)
+  - http:
+      paths:
+      - backend:
+          service:
+            name: longhorn-frontend
+            port:
+              number: 80
+        pathType: ImplementationSpecific
+        path: /longhorn(/|$)(.*)
   tls:
   - hosts:
     - skabrits.tplinkdns.com
