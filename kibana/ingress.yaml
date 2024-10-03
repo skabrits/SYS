@@ -1,22 +1,35 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-  # name: ingress-kib-https
-  # namespace: log-system
-  # annotations:
-    # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    # nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    # nginx.ingress.kubernetes.io/proxy-ssl-verify: "false"
-# spec:
-  # ingressClassName: nginx
-  # rules:
-  # - http:
-      # paths:
-      # - path: /logs(/|$)(.*)
-        # pathType: Prefix
-        # backend:
-          # service:
-            # name: kibana-kb-http
-            # port:
-              # number: 443
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-kib-https
+  namespace: elastic
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    nginx.ingress.kubernetes.io/proxy-ssl-verify: "false"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: skabrits.tplinkdns.com
+    http:
+      paths:
+      - path: /kibana(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: kibana-kb-http
+            port:
+              number: 443
+  - http:
+      paths:
+      - path: /kibana(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: kibana-kb-http
+            port:
+              number: 443
