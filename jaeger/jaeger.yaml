@@ -23,3 +23,8 @@
         # num-shards: 2
         # num-replicas: 1
     # secretName: jaeger-secret
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: simplest
+  namespace: jaeger
