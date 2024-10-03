@@ -35,7 +35,7 @@ spec:
             name: istio-ingressgateway
             port:
               number: 80
-  # tls:
-  # - hosts:
-  #   - skabrits.tplinkdns.com
-  #   secretName: kubeflow-cert
+  tls:
+  - hosts:
+    - skabrits.tplinkdns.com
+    secretName: kubeflow-cert
