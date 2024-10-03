@@ -19,7 +19,7 @@ spec:
   source:
     chart: nexus-repository-manager
     repoURL: https://sonatype.github.io/helm3-charts/
-    targetRevision: "*"
+    targetRevision: "64.2.0"
     helm:
       releaseName: registry
       parameters:
