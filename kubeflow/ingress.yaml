@@ -16,7 +16,8 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - http:
+  - host: skabrits.tplinkdns.com
+    http:
       paths:
       - path: /
         pathType: Prefix
