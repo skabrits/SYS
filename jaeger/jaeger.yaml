@@ -1,18 +1,18 @@
-apiVersion: jaegertracing.io/v1
-kind: Jaeger
-metadata:
-  name: jaeger-el
-  namespace: jaeger
-spec:
-  strategy: production
-  agent:
-    strategy: DaemonSet
-  query:
-    options:
-      query:
-        base-path: /jaeger
-  ingress:
-    enabled: false
+# apiVersion: jaegertracing.io/v1
+# kind: Jaeger
+# metadata:
+#   name: jaeger-el
+#   namespace: jaeger
+# spec:
+#   strategy: production
+#   agent:
+#     strategy: DaemonSet
+#   query:
+#     options:
+#       query:
+#         base-path: /jaeger
+#   ingress:
+#     enabled: false
   # storage:
     # type: elasticsearch
     # options:
