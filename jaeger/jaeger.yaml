@@ -28,3 +28,8 @@ kind: Jaeger
 metadata:
   name: simplest
   namespace: jaeger
+spec:
+  query:
+    options:
+      query:
+        base-path: /jaeger
