@@ -1,18 +1,18 @@
-# apiVersion: jaegertracing.io/v1
-# kind: Jaeger
-# metadata:
-  # name: jaeger-el
-  # namespace: log-system
-# spec:
-  # strategy: production
-  # agent:
-    # strategy: DaemonSet
-  # query:
-    # options:
-      # query:
-        # base-path: /jaeger
-  # ingress:
-    # enabled: false
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: jaeger-el
+  namespace: log-system
+spec:
+  strategy: production
+  agent:
+    strategy: DaemonSet
+  query:
+    options:
+      query:
+        base-path: /jaeger
+  ingress:
+    enabled: false
   # storage:
     # type: elasticsearch
     # options:
@@ -23,13 +23,3 @@
         # num-shards: 2
         # num-replicas: 1
     # secretName: jaeger-secret
-apiVersion: jaegertracing.io/v1
-kind: Jaeger
-metadata:
-  name: simplest
-  namespace: jaeger
-spec:
-  query:
-    options:
-      query:
-        base-path: /jaeger
