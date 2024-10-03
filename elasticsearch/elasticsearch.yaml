@@ -5,7 +5,7 @@ metadata:
   namespace: elastic
 spec:
   version: 8.15.2
-  # image: skabrits/elasticsearch:7.10.1
+  image: skabrits/elasticsearch:8.15.2
   nodeSets:
     - name: default
       count: 1
