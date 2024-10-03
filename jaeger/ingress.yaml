@@ -1,17 +1,26 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-  # name: ingress-jae-http
-  # namespace: log-system
-# spec:
-  # ingressClassName: nginx
-  # rules:
-  # - http:
-      # paths:
-      # - path: /jaeger(/|$)(.*)
-        # pathType: Prefix
-        # backend:
-          # service:
-            # name: jaeger-el-query
-            # port:
-              # number: 16686
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-jae-http
+  namespace: jaeger
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    nginx.ingress.kubernetes.io/proxy-ssl-verify: "false"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: skabrits.tplinkdns.com
+    http:
+      paths:
+      - path: /jaeger(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: jaeger-el-query
+            port:
+              number: 16686
