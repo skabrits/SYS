@@ -8,6 +8,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "5"
     cert-manager.io/cluster-issuer: letsencrypt-cluster
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/proxy-ssl-verify: "false"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -19,7 +20,7 @@ spec:
   - host: skabrits.tplinkdns.com
     http:
       paths:
-      - path: /
+      - path: /?(.*)
         pathType: Prefix
         backend:
           service:
@@ -28,7 +29,7 @@ spec:
               number: 80
   - http:
       paths:
-      - path: /
+      - path: /?(.*)
         pathType: Prefix
         backend:
           service:
