@@ -4,7 +4,7 @@ metadata:
   name: elastic
   namespace: elastic
 spec:
-  version: docker.elastic.co/eck
+  version: 8.15.2
   # image: skabrits/elasticsearch:7.10.1
   nodeSets:
     - name: default
