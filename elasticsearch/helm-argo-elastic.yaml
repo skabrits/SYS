@@ -1,0 +1,55 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elastic-crd
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    chart: eck-operator-crds
+    repoURL: https://helm.elastic.co
+    targetRevision: "2.14.0"
+    helm:
+      releaseName: uni-crds
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: elastic
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elastic
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    chart: eck-operator
+    repoURL: https://helm.elastic.co
+    targetRevision: "2.14.0"
+    helm:
+      releaseName: uni
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: elastic
