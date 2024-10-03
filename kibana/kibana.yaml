@@ -1,36 +1,36 @@
-# apiVersion: kibana.k8s.elastic.co/v1
-# kind: Kibana
-# metadata: 
-  # name: kibana
-  # namespace: log-system
-# spec:
-  # version: 7.10.1
-  # image: skabrits/kibana:7.10.1
-  # count: 1
-  # elasticsearchRef:
-    # name: elastic
-  # config:
-     # server.basePath: "/logs"
-     # server.rewriteBasePath: true
-  # http:
-    # service:
-      # spec:
-        # type: ClusterIP
-        # ports:
-          # - port: 443
-            # targetPort: 5601
-            # protocol: TCP
-  # podTemplate:
-    # spec:
-      # containers:
-        # - name: kibana
-          # readinessProbe:
-            # failureThreshold: 3
-            # httpGet:
-              # path: /logs/login
-              # port: 5601
-              # scheme: HTTPS
-            # initialDelaySeconds: 10
-            # periodSeconds: 10
-            # successThreshold: 1
-            # timeoutSeconds: 5
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata: 
+  name: kibana
+  namespace: elastic
+spec:
+  version: 8.15.2
+  image: skabrits/kibana:8.15.2
+  count: 1
+  elasticsearchRef:
+    name: elastic
+  config:
+     server.basePath: "/kibana"
+     server.rewriteBasePath: true
+  http:
+    service:
+      spec:
+        type: ClusterIP
+        ports:
+          - port: 443
+            targetPort: 5601
+            protocol: TCP
+  podTemplate:
+    spec:
+      containers:
+        - name: kibana
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /kibana/login
+              port: 5601
+              scheme: HTTPS
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
