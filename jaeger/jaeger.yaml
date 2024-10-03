@@ -2,7 +2,7 @@ apiVersion: jaegertracing.io/v1
 kind: Jaeger
 metadata:
   name: jaeger-el
-  namespace: log-system
+  namespace: jaeger
 spec:
   strategy: production
   agent:
