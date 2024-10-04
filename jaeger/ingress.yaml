@@ -27,3 +27,12 @@ spec:
             name: jaeger-el-query
             port:
               number: 16686
+  - http:
+      paths:
+      - path: /jaeger(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: jaeger-el-query
+            port:
+              number: 16686
