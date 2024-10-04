@@ -23,6 +23,9 @@ spec:
     targetRevision: "2.57.0"
     helm:
       releaseName: tracing
+      parameters:
+      - name: "rbac.clusterRole"
+        value: "true"
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: jaeger
+    namespace: observability
