@@ -25,4 +25,6 @@ spec:
         server-urls: https://elastic-es-http.elastic.svc:9200
         tls:
           skip-host-verify: true
+        num-shards: 1
+        num-replicas: 0  
     secretName: jaeger-secret
