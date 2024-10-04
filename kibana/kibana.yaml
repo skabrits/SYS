@@ -12,7 +12,7 @@ spec:
   config:
      server.basePath: "/kibana"
      server.rewriteBasePath: true
-     server.publicBaseUrl: "skabrits.tplinkdns.com"
+     server.publicBaseUrl: "https://skabrits.tplinkdns.com"
   http:
     service:
       spec:
