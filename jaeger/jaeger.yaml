@@ -12,6 +12,7 @@ spec:
     options:
       query:
         base-path: /jaeger
+      log-level: debug
   ingress:
     enabled: false
   storage:
