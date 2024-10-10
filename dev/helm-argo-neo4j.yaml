@@ -29,6 +29,17 @@ spec:
         value: "test-123"
       - name: "volumes.data.mode"
         value: "defaultStorageClass"
+      - name: "env.NEO4J_PLUGINS"
+        value: '["apoc"]'
+      - name: "env.NEO4J_apoc_export_file_enabled"
+        value: "true"
+      - name: "env.NEO4J_apoc_import_file_enabled"
+        value: "true"
+      - name: "env.NEO4J_apoc_import_file_use__neo4j__config"
+        value: "true"
+      - name: "env.NEO4J_dbms_security_procedures_unrestricted"
+        value: "apoc.*"
+      
   destination:
     server: "https://kubernetes.default.svc"
     namespace: dev
