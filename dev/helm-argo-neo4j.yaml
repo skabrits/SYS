@@ -19,7 +19,7 @@ spec:
   source:
     chart: neo4j
     repoURL: https://github.com/neo4j/helm-charts.git
-    targetRevision: "5.24.1"
+    targetRevision: "dev"
     helm:
       releaseName: arbitraz
       parameters:
