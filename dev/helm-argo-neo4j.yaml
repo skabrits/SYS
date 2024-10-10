@@ -30,7 +30,7 @@ spec:
       - name: "volumes.data.mode"
         value: "defaultStorageClass"
       - name: "env.NEO4J_PLUGINS"
-        value: "\[\"apoc\"\]"
+        value: '''["apoc"]'''
       - name: "env.NEO4J_apoc_export_file_enabled"
         value: "true"
       - name: "env.NEO4J_apoc_import_file_enabled"
