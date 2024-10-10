@@ -27,8 +27,10 @@ spec:
         value: "arbitraz"
       - name: "neo4j.password"
         value: "test-123"
-      - name: "volumes.mode"
+      - name: "volumes.data.mode"
         value: "defaultStorageClass"
+      - name: "services.admin.spec.type"
+        value: "LoadBalancer"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: dev
