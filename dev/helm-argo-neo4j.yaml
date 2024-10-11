@@ -29,19 +29,21 @@ spec:
         value: "test-123"
       - name: "volumes.data.mode"
         value: "defaultStorageClass"
-      - name: "env.NEO4J_PLUGINS"
-        value: "[\"apoc\"]"
-      - name: "env.NEO4J_apoc_export_file_enabled"
+      - name: "config.server\.directories\.plugins"
+        value: "/var/lib/neo4j/labs"
+      - name: "apoc_config.apoc\.export\.file\.enabled"
         value: "true"
         forceString: true
-      - name: "env.NEO4J_apoc_import_file_enabled"
+      - name: "apoc_config.apoc\.import\.file\.enabled"
         value: "true"
         forceString: true
-      - name: "env.NEO4J_apoc_import_file_use__neo4j__config"
+      - name: "apoc_config.apoc\.import\.file\.use_neo4j_config"
         value: "true"
         forceString: true
-      - name: "env.NEO4J_dbms_security_procedures_unrestricted"
-        value: "*"
+      - name: "config.dbms\.security\.procedures\.unrestricted"
+        value: "apoc.*"
+      - name: "config.server\.config\.strict_validation\.enabled"
+        value: "false"
         forceString: true
       
   destination:
