@@ -42,6 +42,7 @@ spec:
         forceString: true
       - name: "env.NEO4J_dbms_security_procedures_unrestricted"
         value: "apoc.*"
+        forceString: true
       
   destination:
     server: "https://kubernetes.default.svc"
