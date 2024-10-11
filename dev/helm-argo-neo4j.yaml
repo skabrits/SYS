@@ -41,7 +41,7 @@ spec:
         value: "true"
         forceString: true
       - name: "env.NEO4J_dbms_security_procedures_unrestricted"
-        value: "apoc.*"
+        value: "apoc.nodes.cycles,apoc.cypher.*"
         forceString: true
       
   destination:
