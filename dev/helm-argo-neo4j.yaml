@@ -46,9 +46,9 @@ spec:
         value: "false"
         forceString: true
       - name: "neo4j.resources.cpu"
-        value: "6000m"
+        value: "8000m"
       - name: "neo4j.resources.memory"
-        value: "8Gi"
+        value: "12Gi"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: dev
