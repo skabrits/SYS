@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openwebui
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    chart: open-webui 
+    repoURL: https://helm.openwebui.com/
+    targetRevision: "*"
+    helm:
+      releaseName: llm
+      parameters:
+      - name: "ollama.enabled"
+        value: "false"
+      - name: "ollamaUrls[0]"
+        value: "llama3-ollama.ollama.svc"
+      - name: "service.type"
+        value: "LoadBalancer"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: ollama
