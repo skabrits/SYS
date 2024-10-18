@@ -26,7 +26,7 @@ spec:
       - name: "ollama.enabled"
         value: "false"
       - name: "ollamaUrls[0]"
-        value: "192.168.0.154"
+        value: "http://llama3-ollama.ollama.svc.cluster.local:11434"
       - name: "extraEnvVars[0].name"
         value: "OPENAI_API_KEY"
       - name: "extraEnvVars[0].value"
