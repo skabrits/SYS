@@ -29,6 +29,8 @@ spec:
         value: "llama3-ollama.ollama.svc"
       - name: "service.type"
         value: "LoadBalancer"
+      - name: "service.annotations.metallb\\.universe\\.tf/loadBalancerIPs"
+        value: "192.168.0.155"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ollama
