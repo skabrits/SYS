@@ -40,7 +40,7 @@ spec:
       - name: "service.type"
         value: "ClusterIP"
       - name: "resources.requests.cpu"
-        value: "12"
+        value: "10"
       - name: "resources.requests.memory"
         value: "32Gi"
   destination:
