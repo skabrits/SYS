@@ -33,6 +33,8 @@ spec:
         value: "true"
       - name: "persistentVolume.size"
         value: "120Gi"
+      - name: "persistentVolume.storageClass"
+        value: "longhorn"
       - name: "runtimeClassName"
         value: "nvidia"
       - name: "service.type"
