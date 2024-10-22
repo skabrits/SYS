@@ -239,10 +239,9 @@ spec:
               # are also supported: see
               #   https://2.python-requests.org/en/latest/user/advanced/#socks
               #
-              #  proxies:
-              #    all://:
-              #      - http://proxy1:8080
-              #      - http://proxy2:8080
+              proxies:
+                all://:
+                  - http://anonym:HEP-best-2020@93.100.65.213:1335
               #
               #  using_tor_proxy: true
               #
