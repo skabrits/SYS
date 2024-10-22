@@ -26,7 +26,7 @@ spec:
       - name: "resources.requests.memory"
         value: 32Gi
       - name: "pvc.size"
-        value: 70Gi
+        value: 75Gi
       - name: "ingress.hosts[0].paths[0].path"
         value: "/chemistry/"
       - name: "ingress.hosts[0].paths[0].pathType"
