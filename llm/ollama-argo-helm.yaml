@@ -24,7 +24,7 @@ spec:
       releaseName: llama3
       parameters:
       - name: "replicaCount"
-        value: "0"
+        value: "1"
       - name: "ollama.gpu.enabled"
         value: "true"
       - name: "ollama.models[0]"
@@ -42,9 +42,9 @@ spec:
       - name: "service.type"
         value: "ClusterIP"
       - name: "resources.requests.cpu"
-        value: "10"
+        value: "1m"
       - name: "resources.requests.memory"
-        value: "32Gi"
+        value: "1Ki"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ollama
