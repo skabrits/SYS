@@ -43,6 +43,7 @@ spec:
         value: "ENABLE_RAG_WEB_SEARCH"
       - name: "extraEnvVars[3].value"
         value: "True"
+        forceString: true
       - name: "extraEnvVars[4].name"
         value: "RAG_WEB_SEARCH_RESULT_COUNT"
       - name: "extraEnvVars[4].value"
