@@ -1653,9 +1653,9 @@ spec:
                 engine: sepiasearch
                 shortcut: sep
 
-              - name: soundcloud
-                engine: soundcloud
-                shortcut: sc
+              # - name: soundcloud
+              #   engine: soundcloud
+              #   shortcut: sc
 
               - name: stackoverflow
                 engine: stackexchange
