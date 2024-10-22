@@ -48,10 +48,12 @@ spec:
         value: "RAG_WEB_SEARCH_RESULT_COUNT"
       - name: "extraEnvVars[4].value"
         value: "3"
+        forceString: true
       - name: "extraEnvVars[5].name"
         value: "RAG_WEB_SEARCH_CONCURRENT_REQUESTS"
       - name: "extraEnvVars[5].value"
         value: "10"
+        forceString: true
       - name: "extraEnvVars[6].name"
         value: "SEARXNG_QUERY_URL"
       - name: "extraEnvVars[6].value"
