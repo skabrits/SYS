@@ -22,7 +22,7 @@ spec:
       releaseName: slava
       parameters:
       - name: "resources.requests.cpu"
-        value: 6000m
+        value: 10000m
       - name: "pvc.size"
         value: 20Gi
       - name: "ingress.hosts[0].paths[0].path"
@@ -30,7 +30,7 @@ spec:
       - name: "ingress.hosts[0].paths[0].pathType"
         value: "ImplementationSpecific"
       - name: "replicaCount"
-        value: "0"
+        value: "1"
       valueFiles:
       - $values/deploy/chemistry/values.yaml
   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'

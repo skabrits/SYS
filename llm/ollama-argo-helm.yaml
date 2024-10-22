@@ -23,6 +23,8 @@ spec:
     helm:
       releaseName: llama3
       parameters:
+      - name: "replicaCount"
+        value: "0"
       - name: "ollama.gpu.enabled"
         value: "true"
       - name: "ollama.models[0]"
