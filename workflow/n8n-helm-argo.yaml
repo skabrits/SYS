@@ -17,9 +17,9 @@ spec:
       allowEmpty: true
   project: default
   source:
-    chart: n8n
-    repoURL: oci://8gears.container-registry.com/library
-    targetRevision: "*"
+    path: charts/n8n
+    repoURL: https://github.com/8gears/n8n-helm-chart.git
+    targetRevision: "0.25.2"
     helm:
       releaseName: workflow
       values: |
