@@ -17,9 +17,9 @@ spec:
       allowEmpty: true
   project: default
   source:
-    chart: searxng
-    repoURL: https://charts.searxng.org
-    targetRevision: "*"
+    path: searxng
+    repoURL: https://github.com/skabrits/searxng-helm-chart.git
+    targetRevision: "main"
     helm:
       releaseName: llm
       parameters:
@@ -41,6 +41,10 @@ spec:
         value: "false"
       values: |
         searxng:
+          limiter: |-
+            [botdetection.ip_limit]
+            # activate link_token method in the ip_limit method
+            link_token = true
           config:
             general:
               # Debug mode, only for development. Is overwritten by ${SEARXNG_DEBUG}
