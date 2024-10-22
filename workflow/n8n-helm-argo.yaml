@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: n8n
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    chart: n8n
+    repoURL: oci://8gears.container-registry.com/library
+    targetRevision: "*"
+    helm:
+      releaseName: workflow
+      values: |
+        database:
+          type: 'mysqldb'
+          mysqldb:
+            host: schedule-mysql.dev.svc
+            password: test-123
+        service:
+          type: LoadBalancer
+        persistence:
+          enabled: true
+          storageClass: "longhorn"
+          accessModes:
+            - ReadWriteOnce
+          size: 10Gi
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: workflow
