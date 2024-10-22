@@ -23,6 +23,8 @@ spec:
     helm:
       releaseName: workflow
       values: |
+        extraEnv:
+          N8N_SECURE_COOKIE: false
         database:
           type: 'mysqldb'
           mysqldb:
