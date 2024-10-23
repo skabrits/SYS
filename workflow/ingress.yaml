@@ -20,8 +20,8 @@ spec:
   - host: skabrits.tplinkdns.com
     http:
       paths:
-      - path: /n8n
-        pathType: Prefix
+      - path: /n8n(/|$)(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: workflow-n8n
