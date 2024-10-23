@@ -32,7 +32,8 @@ spec:
           N8N_PATH: /n8n/
           WEBHOOK_URL: "https://skabrits.tplinkdns.com/"
           N8N_EDITOR_BASE_URL: "https://skabrits.tplinkdns.com/"
-          "VUE_APP_PUBLIC_PATH": "/n8n/"
+          VUE_APP_PUBLIC_PATH: "/n8n/"
+          N8N_PROTOCOL: https
         database:
           type: "mysqldb"
           mysqldb:
