@@ -30,7 +30,7 @@ spec:
           # protocol: https
         extraEnv:
           N8N_PATH: /n8n
-          WEBHOOK_URL: "https://skabrits.tplinkdns.com/
+          WEBHOOK_URL: "https://skabrits.tplinkdns.com/"
         database:
           type: "mysqldb"
           mysqldb:
