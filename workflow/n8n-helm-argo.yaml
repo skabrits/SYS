@@ -28,8 +28,8 @@ spec:
           host: skabrits.tplinkdns.com
           # port: 443
           # protocol: https
-        # extraEnv:
-        #   WEBHOOK_URL: "https://skabrits.tplinkdns.com/"
+        extraEnv:
+          WEBHOOK_URL: "https://skabrits.tplinkdns.com/n8n/"
         database:
           type: "mysqldb"
           mysqldb:
