@@ -25,6 +25,8 @@ spec:
       values: |
         path: /n8n
         host: skabrits.tplinkdns.com
+        port: 443
+        protocol: https
         database:
           type: 'mysqldb'
           mysqldb:
