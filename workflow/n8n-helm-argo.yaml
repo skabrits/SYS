@@ -23,12 +23,15 @@ spec:
     helm:
       releaseName: workflow
       values: |
-        path: /n8n
-        host: skabrits.tplinkdns.com
-        port: 443
-        protocol: https
+        generic:
+          path: /n8n
+          host: skabrits.tplinkdns.com
+          # port: 443
+          # protocol: https
+        extraEnv:
+          WEBHOOK_URL: "https://skabrits.tplinkdns.com/"
         database:
-          type: 'mysqldb'
+          type: "mysqldb"
           mysqldb:
             host: schedule-mysql.dev.svc
             password: test-123
