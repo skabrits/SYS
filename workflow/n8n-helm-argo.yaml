@@ -23,15 +23,15 @@ spec:
     helm:
       releaseName: workflow
       values: |
-        extraEnv:
-          N8N_SECURE_COOKIE: false
+        path: /n8n
+        host: skabrits.tplinkdns.com
         database:
           type: 'mysqldb'
           mysqldb:
             host: schedule-mysql.dev.svc
             password: test-123
         service:
-          type: LoadBalancer
+          type: ClusterIP
         persistence:
           enabled: true
           storageClass: "longhorn"
