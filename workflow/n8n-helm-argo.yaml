@@ -23,13 +23,13 @@ spec:
     helm:
       releaseName: workflow
       values: |
-        generic:
+        config:
           path: /n8n
           host: skabrits.tplinkdns.com
           # port: 443
           # protocol: https
-        extraEnv:
-          WEBHOOK_URL: "https://skabrits.tplinkdns.com/"
+        # extraEnv:
+        #   WEBHOOK_URL: "https://skabrits.tplinkdns.com/"
         database:
           type: "mysqldb"
           mysqldb:
