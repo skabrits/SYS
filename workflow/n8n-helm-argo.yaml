@@ -19,7 +19,7 @@ spec:
   source:
     path: charts/n8n
     repoURL: https://github.com/8gears/n8n-helm-chart.git
-    targetRevision: "0.25.2"
+    targetRevision: "main"
     helm:
       releaseName: workflow
       values: |
