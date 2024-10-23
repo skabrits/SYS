@@ -29,9 +29,9 @@ spec:
         #   # port: 443
         #   # protocol: https
         extraEnv:
-          # N8N_PATH: /n8n/
+          N8N_PATH: n8n/
           # WEBHOOK_URL: "https://skabrits.tplinkdns.com/"
-          N8N_PROTOCOL: https
+          # N8N_PROTOCOL: https
         database:
           type: "mysqldb"
           mysqldb:
