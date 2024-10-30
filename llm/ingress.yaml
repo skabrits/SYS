@@ -37,8 +37,19 @@ spec:
             name: open-webui
             port:
               number: 80
+  - host: ai.skabrits.duckdns.org
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: open-webui
+            port:
+              number: 80
   tls:
   - hosts:
     - skabrits.ddns.net
     - ai-skabrits.duckdns.org
+    - ai.skabrits.duckdns.org
     secretName: kubeflow-cert
