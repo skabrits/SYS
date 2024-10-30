@@ -44,3 +44,6 @@ spec:
             name: kibana-kb-http
             port:
               number: 443
+  tls:
+  - hosts:
+    - kibana.skabrits.duckdns.org
