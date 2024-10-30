@@ -48,3 +48,4 @@ spec:
   tls:
   - hosts:
     - kibana.skabrits.duckdns.org
+    secretName: kubeflow-cert
