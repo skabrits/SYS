@@ -28,6 +28,16 @@ spec:
               number: 80
         pathType: ImplementationSpecific
         path: /longhorn(/|$)(.*)
+  - host: longhorn.skabrits.duckdns.org
+    http:
+      paths:
+      - backend:
+          service:
+            name: longhorn-frontend
+            port:
+              number: 80
+        pathType: ImplementationSpecific
+        path: /()(.*)
   - http:
       paths:
       - backend:
@@ -40,4 +50,5 @@ spec:
   tls:
   - hosts:
     - skabrits.tplinkdns.com
+    - longhorn.skabrits.duckdns.org
     secretName: longhorn-cert
