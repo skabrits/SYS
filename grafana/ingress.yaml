@@ -47,3 +47,4 @@ spec:
   tls:
   - hosts:
     - grafana.skabrits.duckdns.org
+    secretName: kubeflow-cert
