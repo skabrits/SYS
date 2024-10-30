@@ -43,3 +43,6 @@ spec:
               number: 80
         pathType: ImplementationSpecific
         path: /grafana(/|$)(.*)
+  tls:
+  - hosts:
+    - grafana.skabrits.duckdns.org
