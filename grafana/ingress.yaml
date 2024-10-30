@@ -24,6 +24,16 @@ spec:
               number: 80
         pathType: ImplementationSpecific
         path: /grafana(/|$)(.*)
+  - host: grafana.skabrits.duckdns.org
+    http:
+      paths:
+      - backend:
+          service:
+            name: grafana
+            port:
+              number: 80
+        pathType: ImplementationSpecific
+        path: /grafana(/|$)(.*)
   - http:
       paths:
       - backend:
