@@ -25,6 +25,16 @@ spec:
             name: kibana-kb-http
             port:
               number: 443
+  - host: kibana.skabrits.duckdns.org
+    http:
+      paths:
+      - path: /kibana(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: kibana-kb-http
+            port:
+              number: 443
   - http:
       paths:
       - path: /kibana(/|$)(.*)
