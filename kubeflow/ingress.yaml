@@ -26,6 +26,16 @@ spec:
             name: istio-ingressgateway
             port:
               number: 80
+  - host: kubeflow.skabrits.duckdns.org
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: istio-ingressgateway
+            port:
+              number: 80
   # - http:
   #     paths:
   #     - path: /
@@ -38,4 +48,5 @@ spec:
   tls:
   - hosts:
     - skabrits.tplinkdns.com
+    - kubeflow.skabrits.duckdns.org
     secretName: kubeflow-cert
