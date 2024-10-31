@@ -18,7 +18,7 @@ spec:
   project: default
   source:
     chart: eck-operator
-    repoURL: helm.elastic.co
+    repoURL: https://helm.elastic.co
     targetRevision: "2.14.0"
     helm:
       releaseName: uni
