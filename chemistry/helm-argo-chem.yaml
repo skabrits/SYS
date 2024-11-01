@@ -37,6 +37,8 @@ spec:
         value: "ImplementationSpecific"
       - name: "replicaCount"
         value: "1"
+      - name: "image.tag"
+        value: "2.0.0"
       valueFiles:
       - $values/deploy/chemistry/values.yaml
   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
