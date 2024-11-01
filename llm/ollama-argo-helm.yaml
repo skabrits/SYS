@@ -24,7 +24,7 @@ spec:
       releaseName: llama3
       parameters:
       - name: "replicaCount"
-        value: "0"
+        value: "1"
       - name: "ollama.gpu.enabled"
         value: "true"
       - name: "ollama.models[0]"
