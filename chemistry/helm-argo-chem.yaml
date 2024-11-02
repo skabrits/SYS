@@ -46,4 +46,4 @@ spec:
     ref: values
   destination:
     server: "https://kubernetes.default.svc"
-#     namespace: chemistry
+    namespace: chemistry
