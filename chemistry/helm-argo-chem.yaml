@@ -22,15 +22,15 @@
 #       releaseName: slava
 #       parameters:
 #       - name: "resources.requests.cpu"
-#         value: 9000m
+#         value: 10000m
 #       - name: "resources.requests.memory"
-#         value: 30Gi
+#         value: 32Gi
 #       - name: "resources.limits.cpu"
 #         value: 10000m
 #       - name: "resources.limits.memory"
 #         value: 32Gi
 #       - name: "pvc.size"
-#         value: 75Gi
+#         value: 64Gi
 #       - name: "ingress.hosts[0].paths[0].path"
 #         value: "/chemistry/"
 #       - name: "ingress.hosts[0].paths[0].pathType"
