@@ -24,11 +24,11 @@ spec:
       - name: "resources.requests.cpu"
         value: 11500m
       - name: "resources.requests.memory"
-        value: 32Gi
+        value: 34Gi
       - name: "resources.limits.cpu"
         value: 11500m
       - name: "resources.limits.memory"
-        value: 32Gi
+        value: 36Gi
       - name: "pvc.size"
         value: 64Gi
       - name: "pvc.mode"
