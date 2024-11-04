@@ -22,11 +22,11 @@ spec:
       releaseName: slava
       parameters:
       - name: "resources.requests.cpu"
-        value: 10500m
+        value: 11500m
       - name: "resources.requests.memory"
         value: 32Gi
       - name: "resources.limits.cpu"
-        value: 10500m
+        value: 11500m
       - name: "resources.limits.memory"
         value: 32Gi
       - name: "pvc.size"
