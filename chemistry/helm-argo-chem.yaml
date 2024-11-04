@@ -31,6 +31,8 @@ spec:
         value: 32Gi
       - name: "pvc.size"
         value: 64Gi
+      - name: "pvc.mode"
+        value: "ReadWriteOnce"
       - name: "ingress.hosts[0].paths[0].path"
         value: "/chemistry/"
       - name: "ingress.hosts[0].paths[0].pathType"
