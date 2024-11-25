@@ -8,6 +8,11 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
+  ignoreDifferences:
+    - group: v1
+      kind: ServiceAccount
+      jsonPointers:
+      - /metadata/automountServiceAccountToken
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
