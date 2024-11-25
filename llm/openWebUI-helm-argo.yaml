@@ -9,10 +9,9 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   ignoreDifferences:
-    - group: *
-      kind: ServiceAccount
+    - kind: ServiceAccount
       jsonPointers:
-      - /metadata/automountServiceAccountToken
+      - /automountServiceAccountToken
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
