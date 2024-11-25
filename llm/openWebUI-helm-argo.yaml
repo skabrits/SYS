@@ -11,7 +11,7 @@ spec:
   ignoreDifferences:
     - kind: ServiceAccount
       jsonPointers:
-      - /automountServiceAccountToken
+      - /metadata/automountServiceAccountToken
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
