@@ -1,36 +1,36 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: nexus
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
-  project: default
-  source:
-    chart: nexus-repository-manager
-    repoURL: https://sonatype.github.io/helm3-charts/
-    targetRevision: "64.2.0"
-    helm:
-      releaseName: registry
-      parameters:
-      - name: "service.type"
-        value: "LoadBalancer"
-      - name: "nexus.docker.enable"
-        value: "true"
-      - name: "persistence.storageSize"
-        value: "40Gi"
-      - name: "image.tag"
-        value: "3.68.1"
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: nexus-repo
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: nexus
+#   namespace: argocd
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "2"
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   syncPolicy:
+#     syncOptions:
+#       - CreateNamespace=true
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: true
+#   project: default
+#   source:
+#     chart: nexus-repository-manager
+#     repoURL: https://sonatype.github.io/helm3-charts/
+#     targetRevision: "64.2.0"
+#     helm:
+#       releaseName: registry
+#       parameters:
+#       - name: "service.type"
+#         value: "LoadBalancer"
+#       - name: "nexus.docker.enable"
+#         value: "true"
+#       - name: "persistence.storageSize"
+#         value: "40Gi"
+#       - name: "image.tag"
+#         value: "3.68.1"
+#   destination:
+#     server: "https://kubernetes.default.svc"
+#     namespace: nexus-repo
