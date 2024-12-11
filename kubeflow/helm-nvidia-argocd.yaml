@@ -39,6 +39,7 @@ spec:
         value: "CONTAINERD_SET_AS_DEFAULT"
       - name: "toolkit.env[3].value"
         value: "true"
+        forceString: true
       - name: "driver.version"
         value: "550.127.08"
         forceString: true
