@@ -17,7 +17,7 @@ spec:
   sources:
   - path: chemistry-pack/
     repoURL: https://github.com/skabrits/chemistry.git
-    targetRevision: main
+    targetRevision: opengl
     helm:
       releaseName: slava
       parameters:
@@ -34,13 +34,13 @@ spec:
       - name: "pvc.mode"
         value: "ReadWriteOnce"
       - name: "ingress.hosts[0].paths[0].path"
-        value: "/chemistry/"
+        value: "/"
       - name: "ingress.hosts[0].paths[0].pathType"
-        value: "ImplementationSpecific"
+        value: "Prefix"
       - name: "replicaCount"
         value: "1"
       - name: "image.tag"
-        value: "2.1.0"
+        value: "3.0.1"
       valueFiles:
       - $values/deploy/chemistry/values.yaml
   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
