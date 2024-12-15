@@ -8,6 +8,10 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
+  ignoreDifferences:
+  - kind: GpuDevicePlugin
+    jsonPointers:
+    - /spec/resourceManager
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
