@@ -73,8 +73,6 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   syncPolicy:
-    syncOptions:
-    - Replace=true
     automated:
       prune: true
       selfHeal: true
