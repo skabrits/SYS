@@ -8,6 +8,8 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
+  sourceRepos:
+  - '*'
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
