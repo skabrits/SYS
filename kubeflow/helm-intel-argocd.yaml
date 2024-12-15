@@ -37,7 +37,8 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   ignoreDifferences:
-  - kind: GpuDevicePlugin
+  - group: deviceplugin.intel.com
+    kind: GpuDevicePlugin
     jsonPointers:
     - /spec/resourceManager
   syncPolicy:
