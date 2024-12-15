@@ -52,8 +52,7 @@ spec:
       releaseName: intel
       parameters:
       - name: "nodeFeatureRule"
-        value: "true"
-        forceString: true
+        value: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: inteldeviceplugins-system
