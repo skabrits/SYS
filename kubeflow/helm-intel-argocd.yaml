@@ -1,0 +1,59 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dp-operator
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    chart: intel-device-plugins-operator
+    repoURL: https://intel.github.io/helm-charts
+    targetRevision: "0.31.1"
+    helm:
+      releaseName: dp-operator
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: inteldeviceplugins-system
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: intel
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    chart: intel-device-plugins-gpu
+    repoURL: https://intel.github.io/helm-charts
+    targetRevision: "0.31.1"
+    helm:
+      releaseName: intel
+      parameters:
+      - name: "nodeFeatureRule"
+        value: "true"
+        forceString: true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: inteldeviceplugins-system
