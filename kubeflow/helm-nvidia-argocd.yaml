@@ -41,13 +41,13 @@ spec:
         value: "true"
         forceString: true
       - name: "driver.version"
-        value: "565.57.01"
+        value: "535.216.03"
         forceString: true
-      - name: "validator.driver.env[0].name"
-        value: "DISABLE_DEV_CHAR_SYMLINK_CREATION"
-      - name: "validator.driver.env[0].value"
-        value: "true"
-        forceString: true
+      # - name: "validator.driver.env[0].name"
+      #   value: "DISABLE_DEV_CHAR_SYMLINK_CREATION"
+      # - name: "validator.driver.env[0].value"
+      #   value: "true"
+      #   forceString: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: gpu-operator
