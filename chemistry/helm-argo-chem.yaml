@@ -26,7 +26,7 @@ spec:
       - name: "resources.requests.memory"
         value: 36Gi
       - name: "resources.limits.cpu"
-        value: 13000m
+        value: 14000m
       - name: "resources.limits.memory"
         value: 42Gi
       - name: "storage.size"
