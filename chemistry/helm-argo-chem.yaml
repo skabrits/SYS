@@ -29,9 +29,9 @@ spec:
         value: 12000m
       - name: "resources.limits.memory"
         value: 40Gi
-      - name: "pvc.size"
+      - name: "storage.size"
         value: 64Gi
-      - name: "pvc.mode"
+      - name: "storage.mode"
         value: "ReadWriteOnce"
       - name: "ingress.hosts[0].paths[0].path"
         value: "/"
