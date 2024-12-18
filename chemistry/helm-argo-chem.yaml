@@ -26,11 +26,13 @@ spec:
       - name: "resources.requests.memory"
         value: 36Gi
       - name: "resources.limits.cpu"
-        value: 12000m
+        value: 13000m
       - name: "resources.limits.memory"
-        value: 40Gi
+        value: 42Gi
       - name: "storage.size"
         value: 64Gi
+      - name: "storage.shm"
+        value: 8Gi
       - name: "storage.mode"
         value: "ReadWriteOnce"
       - name: "ingress.hosts[0].paths[0].path"
