@@ -41,7 +41,7 @@ spec:
         value: "true"
         forceString: true
       - name: "driver.version"
-        value: "535.216.03"
+        value: "560.35.05"
         forceString: true
       # - name: "validator.driver.env[0].name"
       #   value: "DISABLE_DEV_CHAR_SYMLINK_CREATION"
