@@ -43,6 +43,7 @@ spec:
                 -XX:+UnlockExperimentalVMOptions
                 -XX:+UseCGroupMemoryLimitForHeap
                 -Djava.util.prefs.userRoot=/nexus-data/javaprefs
+                -Dmaven.wagon.rto=6000000
           resources:
             requests:
               memory: 16Gi
