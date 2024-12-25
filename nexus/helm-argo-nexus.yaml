@@ -66,6 +66,10 @@ spec:
             nginx.ingress.kubernetes.io/proxy-ssl-verify: "true"
             nginx.ingress.kubernetes.io/ssl-redirect: "true"
             nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+            nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+            nginx.ingress.kubernetes.io/proxy-read-timeout: "6000"
+            nginx.ingress.kubernetes.io/proxy-send-timeout: "6000"
+            nginx.ingress.kubernetes.io/client-body-timeout: "6000"
           hostPath: /
           hostRepo: nx.skabrits.duckdns.org
           tls:
