@@ -43,6 +43,9 @@ spec:
                 -XX:+UnlockExperimentalVMOptions
                 -XX:+UseCGroupMemoryLimitForHeap
                 -Djava.util.prefs.userRoot=/nexus-data/javaprefs
+          resources:
+            requests:
+              memory: 16Gi
 
         ingress:
           enabled: true
