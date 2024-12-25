@@ -51,12 +51,17 @@ spec:
             limits:
               cpu: 8
 
+        service:
+          annotations:
+            metallb.universe.tf/loadBalancerIPs: 192.168.0.141
+            metallb.universe.tf/allow-shared-ip: "nexus"
+          type: LoadBalancer
+
         ingress:
           enabled: true
           ingressClassName: nginx
           annotations:
-            nginx.ingress.kubernetes.io/proxy-body-size: 0
-            
+            nginx.ingress.kubernetes.io/proxy-body-size: "900000m"
             cert-manager.io/cluster-issuer: letsencrypt-cluster
             nginx.ingress.kubernetes.io/proxy-ssl-verify: "true"
             nginx.ingress.kubernetes.io/ssl-redirect: "true"
