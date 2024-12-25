@@ -46,6 +46,7 @@ spec:
                 -Dmaven.wagon.rto=6000000
           resources:
             requests:
+              cpu: 500m
               memory: 16Gi
             limits:
               cpu: 8
