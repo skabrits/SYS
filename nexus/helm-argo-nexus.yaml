@@ -47,6 +47,8 @@ spec:
           resources:
             requests:
               memory: 16Gi
+            limits:
+              cpu: 8
 
         ingress:
           enabled: true
