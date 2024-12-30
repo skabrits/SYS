@@ -24,7 +24,7 @@ spec:
       releaseName: registry
       parameters:
       - name: "persistence.storageSize"
-        value: "120Gi"
+        value: "180Gi"
       - name: "image.tag"
         value: "3.68.1"
       values: |
