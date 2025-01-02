@@ -26,6 +26,8 @@ spec:
       - name: "controller.allowSnippetAnnotations"
         value: "true"
         forceString: true
+      - name: "controller.extraArgs.tcp-services-configmap"
+        value: "default/tcp-services"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
