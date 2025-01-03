@@ -28,8 +28,8 @@ spec:
         forceString: true
       - name: "controller.extraArgs.tcp-services-configmap"
         value: "ingress-nginx/tcp-services"
-      - name: "controller.service.annotations"
-        values: "metallb.universe.tf/loadBalancerIPs: 192.168.0.140"
+      - name: "controller.service.annotations.metallb\\.universe\\.tf/loadBalancerIPs"
+        values: "192.168.0.140"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ingress-nginx
