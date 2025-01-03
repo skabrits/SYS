@@ -27,7 +27,7 @@ spec:
         value: "true"
         forceString: true
       - name: "controller.extraArgs.tcp-services-configmap"
-        value: "default/tcp-services"
+        value: "ingress-nginx/tcp-services"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ingress-nginx
