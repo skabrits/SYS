@@ -11,7 +11,7 @@ metadata:
     policies.kyverno.io/subject: pod
     policies.kyverno.io/minversion: "1.11.4"
     kyverno.io/kyverno-version: "1.11.4"
-    kyverno.io/kubernetes-version: "1.26"
+    kyverno.io/kubernetes-version: "1.31"
     policies.kyverno.io/description: >-
       This policy adds runtime class NVIDIA to pods requesting gpu.
 spec:
