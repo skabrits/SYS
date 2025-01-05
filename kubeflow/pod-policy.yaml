@@ -9,8 +9,8 @@ metadata:
     policies.kyverno.io/category: Mutator
     policies.kyverno.io/severity: low
     policies.kyverno.io/subject: pod
-    policies.kyverno.io/minversion: "1.11.4"
-    kyverno.io/kyverno-version: "1.11.4"
+    policies.kyverno.io/minversion: "1.13.2"
+    kyverno.io/kyverno-version: "1.13.2"
     kyverno.io/kubernetes-version: "1.31"
     policies.kyverno.io/description: >-
       This policy adds runtime class NVIDIA to pods requesting gpu.
