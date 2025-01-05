@@ -1,38 +1,38 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "3"
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
-  name: kyverno
-  namespace: argocd
-spec:
-  destination:
-    namespace: kyverno
-    server: https://kubernetes.default.svc
-  ignoreDifferences:
-  - group: rbac.authorization.k8s.io
-    jsonPointers:
-    - /rules
-    kind: ClusterRole
-  - group: kyverno.io
-    jqPathExpressions:
-    - .spec.rules[] | select(.name|test("autogen-."))
-    kind: ClusterPolicy
-  project: default
-  source:
-    directory:
-      recurse: true
-    path: ./
-    repoURL: https://github.com/skabrits/kyverno.git
-    targetRevision: main
-  syncPolicy:
-    automated:
-      allowEmpty: true
-      prune: true
-      selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
-    - ServerSideApply=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#     argocd.argoproj.io/sync-wave: "3"
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+#   name: kyverno
+#   namespace: argocd
+# spec:
+#   destination:
+#     namespace: kyverno
+#     server: https://kubernetes.default.svc
+#   ignoreDifferences:
+#   - group: rbac.authorization.k8s.io
+#     jsonPointers:
+#     - /rules
+#     kind: ClusterRole
+#   - group: kyverno.io
+#     jqPathExpressions:
+#     - .spec.rules[] | select(.name|test("autogen-."))
+#     kind: ClusterPolicy
+#   project: default
+#   source:
+#     directory:
+#       recurse: true
+#     path: ./
+#     repoURL: https://github.com/skabrits/kyverno.git
+#     targetRevision: main
+#   syncPolicy:
+#     automated:
+#       allowEmpty: true
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#     - CreateNamespace=true
+#     - ServerSideApply=true
