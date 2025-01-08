@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx-port-configurator
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    path: nginx-port-configurator/
+    repoURL: https://github.com/skabrits/nginx-port-configurator.git
+    targetRevision: master
+    helm:
+      releaseName: helper
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: ingress-nginx
