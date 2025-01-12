@@ -30,9 +30,9 @@ spec:
       - name: "server.persistentVolume.storageClass"
         value: "longhorn"
       - name: "server.persistentVolume.size"
-        value: "20Gi"
+        value: "25Gi"
       - name: "server.persistentVolume.retentionSize"
-        value: "20GB"
+        value: "24GB"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: perform-system
