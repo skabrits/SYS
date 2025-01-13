@@ -15,11 +15,14 @@ spec:
       allowEmpty: true
   project: default
   source:
-    path: nginx-port-configurator/
-    repoURL: https://github.com/skabrits/nginx-port-configurator.git
+    path: charts/port-configurator/
+    repoURL: https://github.com/skabrits/port-configurator.git
     targetRevision: master
     helm:
       releaseName: helper
+      parameters:
+      - name: "envs.INGRESS_DEPLOYMENT"
+        value: "my-release-ingress-nginx-controller"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ingress-nginx
