@@ -32,6 +32,9 @@ spec:
         value: "ingress-nginx/udp-services"
       - name: "controller.service.annotations.metallb\\.universe\\.tf/loadBalancerIPs"
         value: "192.168.0.140"
+      - name: "controller.service.labels.tplink-ports"
+        value: "1"
+        forceString: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ingress-nginx
