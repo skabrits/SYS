@@ -23,8 +23,8 @@ spec:
       parameters:
       - name: "envs.INGRESS_DEPLOYMENT"
         value: "my-release-ingress-nginx-controller"
-      - name: "envs.LOG_LEVEL"
-        value: "DEBUG"
+      - name: "image.pullPolicy"
+        value: "Always"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ingress-nginx
