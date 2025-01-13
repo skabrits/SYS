@@ -14,17 +14,22 @@ spec:
       selfHeal: true
       allowEmpty: true
   project: default
-  source:
-    path: charts/port-configurator/
+  sources:
+  - path: charts/port-configurator/
     repoURL: https://github.com/skabrits/port-configurator.git
     targetRevision: master
     helm:
       releaseName: helper
       parameters:
-      - name: "envs.INGRESS_DEPLOYMENT"
-        value: "my-release-ingress-nginx-controller"
-      - name: "envs.LOG_LEVEL"
-        value: "DEBUG"
+      - name: "provider.namespace"
+        value: "router"
+      - name: "provider.name"
+        value: "Router"
+    valueFiles:
+      - $values/deploy/router/values.yaml
+  - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+    targetRevision: main
+    ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: ingress-nginx
+    namespace: router
