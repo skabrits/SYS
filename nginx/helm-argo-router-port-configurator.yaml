@@ -19,7 +19,7 @@ spec:
     repoURL: https://github.com/skabrits/port-configurator.git
     targetRevision: master
     helm:
-      releaseName: helper
+      releaseName: router
       parameters:
       - name: "provider.namespace"
         value: "router"
