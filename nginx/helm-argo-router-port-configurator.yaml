@@ -27,7 +27,7 @@ spec:
         value: "Router"
       - name: "image.pullPolicy"
         value: "Always"
-    valueFiles:
+      valueFiles:
       - $values/deploy/router/values.yaml
   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
     targetRevision: main
