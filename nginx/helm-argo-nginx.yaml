@@ -35,6 +35,9 @@ spec:
       - name: "controller.service.labels.tplink-ports"
         value: "1"
         forceString: true
+      - name: "controller.service.annotations.tplink-ports\\.auto"
+        value: "1"
+        forceString: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ingress-nginx
