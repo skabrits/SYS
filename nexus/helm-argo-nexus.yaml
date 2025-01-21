@@ -29,8 +29,6 @@ spec:
         value: "3.68.1"
       values: |
         nexus:
-          extraLabels :
-            tplink-ports: "tusd"
           docker:
             enabled: true
             registries:
