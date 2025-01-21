@@ -52,9 +52,12 @@ spec:
               cpu: 8
 
         service:
+          labels:
+            tplink-ports: "1"
           annotations:
             metallb.universe.tf/loadBalancerIPs: 192.168.0.141
             metallb.universe.tf/allow-shared-ip: "nexus"
+            tplink-ports.auto: "1"
           type: LoadBalancer
 
         ingress:
