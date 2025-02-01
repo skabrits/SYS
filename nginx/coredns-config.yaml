@@ -11,3 +11,9 @@ data:
         }
         forward . 8.8.8.8
     }
+    duckdns.org {
+        template ANY AAAA {
+            rcode NOERROR
+        }
+        forward . 8.8.8.8
+    }
