@@ -22,12 +22,13 @@ spec:
       releaseName: nginx-test
       values: |
         service:
-          type: ClusterIP
+          type: LoadBalancer
           port: 5000
           iperfPort: 5001
           labels:
             ingress-nginx-ports: "1"
           annotations:
+            metallb.universe.tf/loadBalancerIPs: 192.168.0.154
             ingress-nginx-ports.tcp-ports: 5001:5001
 
         ingress:
