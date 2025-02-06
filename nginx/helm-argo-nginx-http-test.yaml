@@ -1,0 +1,59 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: http-speed-test
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    path: charts/http-speed-test/
+    repoURL: https://github.com/skabrits/http-speed-test.git
+    targetRevision: master
+    helm:
+      releaseName: nginx-test
+      values: |
+        service:
+          type: ClusterIP
+          port: 5000
+          iperfPort: 5001
+          labels:
+            ingress-nginx-ports: "1"
+          annotations:
+            ingress-nginx-ports.tcp-ports: 5001:5001
+
+        ingress:
+          enabled: false
+          className: "nginx"
+          annotations:
+            nginx.ingress.kubernetes.io/proxy-body-size: "900000m"
+            nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+            nginx.ingress.kubernetes.io/proxy-read-timeout: "6000"
+            nginx.ingress.kubernetes.io/proxy-send-timeout: "6000"
+            nginx.ingress.kubernetes.io/client-body-timeout: "6000"
+            nginx.ingress.kubernetes.io/proxy-buffering: "off"
+            nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+            cert-manager.io/cluster-issuer: letsencrypt-cluster
+            nginx.ingress.kubernetes.io/proxy-ssl-verify: "true"
+            nginx.ingress.kubernetes.io/ssl-redirect: "true"
+            nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+          hosts:
+            - host: ts.skabrits.duckdns.org
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - secretName: http-test-secret-tls
+              hosts:
+                - ts.skabrits.duckdns.org
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: http-speed-test
