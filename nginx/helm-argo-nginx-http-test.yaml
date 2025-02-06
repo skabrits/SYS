@@ -31,7 +31,7 @@ spec:
             ingress-nginx-ports.tcp-ports: 5001:5001
 
         ingress:
-          enabled: false
+          enabled: true
           className: "nginx"
           annotations:
             nginx.ingress.kubernetes.io/proxy-body-size: "900000m"
