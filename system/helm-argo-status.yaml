@@ -43,7 +43,10 @@ spec:
                 paths:
                   - path: /
                     pathType: Prefix
-            tls: ["status.skabrits.duckdns.org"]
+            tls: 
+              - hosts:
+                  - status.skabrits.duckdns.org
+                secretName: hdb-secret
         valueFiles:
         - $values/deploy/health-dashboard/values.yaml
     - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
@@ -51,4 +54,4 @@ spec:
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: http-speed-test
+    namespace: default
