@@ -39,13 +39,13 @@ spec:
               nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
               cert-manager.io/cluster-issuer: letsencrypt-cluster
             hosts:
-              - host: status.skabrits.duckdns.org
+              - host: status-skabrits.duckdns.org
                 paths:
                   - path: /
                     pathType: Prefix
             tls: 
               - hosts:
-                  - status.skabrits.duckdns.org
+                  - status-skabrits.duckdns.org
                 secretName: hdb-secret
         valueFiles:
         - $values/deploy/health-dashboard/values.yaml
