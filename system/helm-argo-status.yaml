@@ -1,0 +1,54 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: health-dashboard
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  sources:
+    - path: charts/health-dashboard/
+      repoURL: https://github.com/skabrits/health-dashboard.git
+      targetRevision: master
+      helm:
+        releaseName: service
+        values: |
+          image:
+            repository: skabrits/health-dashboard
+            tag: "latest"
+
+          service:
+            type: ClusterIP
+            port: 80
+
+          ingress:
+            enabled: true
+            className: "nginx"
+            annotations:
+              nginx.ingress.kubernetes.io/proxy-ssl-verify: "true"
+              nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+              nginx.ingress.kubernetes.io/ssl-redirect: "true"
+              nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+              cert-manager.io/cluster-issuer: letsencrypt-cluster
+            hosts:
+              - host: status.skabrits.duckdns.org
+                paths:
+                  - path: /
+                    pathType: Prefix
+            tls: ["status.skabrits.duckdns.org"]
+        valueFiles:
+        - $values/deploy/health-dashboard/values.yaml
+    - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+      targetRevision: main
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: http-speed-test
