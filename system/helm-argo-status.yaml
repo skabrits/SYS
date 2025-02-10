@@ -24,6 +24,7 @@ spec:
           image:
             repository: skabrits/health-dashboard
             tag: "latest"
+            pullPolicy: Always
 
           service:
             type: ClusterIP
