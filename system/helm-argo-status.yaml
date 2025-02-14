@@ -21,6 +21,8 @@ spec:
       helm:
         releaseName: service
         values: |
+          replicaCount: 2
+          
           image:
             repository: skabrits/health-dashboard
             tag: "latest"
