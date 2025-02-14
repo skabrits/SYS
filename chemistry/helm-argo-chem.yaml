@@ -40,7 +40,7 @@ spec:
       - name: "ingress.hosts[0].paths[0].pathType"
         value: "Prefix"
       - name: "replicaCount"
-        value: "0"
+        value: "1"
       - name: "image.tag"
         value: "3.2.0"
       valueFiles:
