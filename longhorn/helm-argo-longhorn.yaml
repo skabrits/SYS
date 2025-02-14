@@ -25,6 +25,9 @@ spec:
         value: "false"
       - name: "persistence.defaultClassReplicaCount"
         value: "2"
+      - name: "defaultSettings.v2DataEngine"
+        value: "true"
+        forceString: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: longhorn-system
