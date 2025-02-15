@@ -131,11 +131,15 @@ spec:
         app: longhorn-v2-loop
     spec:
       affinity:
-        nodeAntiAffinity:
+        nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
-            - matchLabels:
-                node.longhorn.io/disable-v2-data-engine: true
+            - matchExpressions:
+              - key: node.longhorn.io/disable-v2-data-engine: true
+                operator: NotIn
+                values:
+                - true
+
       hostNetwork: true
       hostPID: true
       initContainers:
