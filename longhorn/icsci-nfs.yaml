@@ -138,7 +138,7 @@ spec:
               - key: node.longhorn.io/disable-v2-data-engine
                 operator: NotIn
                 values:
-                - true
+                - "true"
 
       hostNetwork: true
       hostPID: true
