@@ -135,7 +135,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: node.longhorn.io/disable-v2-data-engine: true
+              - key: node.longhorn.io/disable-v2-data-engine
                 operator: NotIn
                 values:
                 - true
