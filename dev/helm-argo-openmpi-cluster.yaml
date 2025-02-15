@@ -21,6 +21,8 @@ spec:
     helm:
       releaseName: ising
       values: |
+        image:
+          pullPolicy: Always
         replicaCount: 3
         resources:
           requests:
