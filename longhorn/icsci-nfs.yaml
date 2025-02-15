@@ -122,12 +122,6 @@ metadata:
   annotations:
     command: &cmd dd if=/dev/zero of=blockfile bs=1M count=51200 && losetup -f blockfile && losetup -j blockfile
 spec:
-  affinity:
-    nodeAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchLabels:
-            node.longhorn.io/disable-v2-data-engine: true
   selector:
     matchLabels:
       app: longhorn-v2-loop
@@ -136,6 +130,12 @@ spec:
       labels:
         app: longhorn-v2-loop
     spec:
+      affinity:
+        nodeAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchLabels:
+                node.longhorn.io/disable-v2-data-engine: true
       hostNetwork: true
       hostPID: true
       initContainers:
