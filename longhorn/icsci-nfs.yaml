@@ -115,8 +115,52 @@ spec:
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
+  name: longhorn-v2-loop
+  namespace: default
+  labels:
+    app: longhorn-v2-loop
+  annotations:
+    command: &cmd dd if=/dev/zero of=blockfile bs=1M count=51200 && losetup -f blockfile && losetup -j blockfile
+spec:
+  affinity:
+    nodeAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchLabels:
+            node.longhorn.io/disable-v2-data-engine: true
+  selector:
+    matchLabels:
+      app: longhorn-v2-loop
+  template:
+    metadata:
+      labels:
+        app: longhorn-v2-loop
+    spec:
+      hostNetwork: true
+      hostPID: true
+      initContainers:
+      - name: v2-loop
+        command:
+          - nsenter
+          - --mount=/proc/1/ns/mnt
+          - --
+          - bash
+          - -c
+          - *cmd
+        image: alpine:3.17
+        securityContext:
+          privileged: true
+      containers:
+      - name: sleep
+        image: registry.k8s.io/pause:3.1
+  updateStrategy:
+    type: RollingUpdate
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
   name: longhorn-nvme-cli-installation
-  namespace: longhorn-system
+  namespace: default
   labels:
     app: longhorn-nvme-cli-installation
   annotations:
@@ -154,7 +198,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: longhorn-spdk-setup
-  namespace: longhorn-system
+  namespace: default
   labels:
     app: longhorn-spdk-setup
   annotations:
