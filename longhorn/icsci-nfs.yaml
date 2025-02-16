@@ -120,7 +120,7 @@ metadata:
   labels:
     app: longhorn-v2-loop
   annotations:
-    command: &cmd dd if=/dev/zero of=blockfile bs=1M count=51200 && losetup -f blockfile && losetup -j blockfile
+    command: &cmd if [ ! -f /blockfile ]; then dd if=/dev/zero of=blockfile bs=1M count=51200; fi && if [ -z "`losetup -j blockfile`" ]; then losetup /dev/loop100 blockfile && losetup -j blockfile; fi
 spec:
   selector:
     matchLabels:
