@@ -22,17 +22,17 @@ spec:
       releaseName: slava
       parameters:
       - name: "resources.requests.cpu"
-        value: 10500m
+        value: 1000m
       - name: "resources.requests.memory"
-        value: 36Gi
+        value: 4Gi
       - name: "resources.limits.cpu"
-        value: 14000m
+        value: 3000m
       - name: "resources.limits.memory"
-        value: 42Gi
+        value: 8Gi
       - name: "storage.size"
         value: 64Gi
       - name: "storage.shm"
-        value: 8Gi
+        value: 1Gi
       - name: "storage.mode"
         value: "ReadWriteOnce"
       - name: "ingress.hosts[0].paths[0].path"
@@ -41,8 +41,10 @@ spec:
         value: "Prefix"
       - name: "replicaCount"
         value: "1"
+      - name: "image.repository"
+        value: "skabrits/chemistry-pack-hpc"
       - name: "image.tag"
-        value: "3.2.0"
+        value: "0.1.0"
       valueFiles:
       - $values/deploy/chemistry/values.yaml
   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
