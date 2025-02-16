@@ -24,6 +24,8 @@ spec:
         image:
           repository: skabrits/orca
           pullPolicy: Always
+        sharedMemory:
+          enabled: true
         replicaCount: 3
         resources:
           requests:
