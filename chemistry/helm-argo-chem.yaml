@@ -44,7 +44,7 @@ spec:
       - name: "image.repository"
         value: "skabrits/web-ubuntu"
       - name: "image.tag"
-        value: "0.4.1"
+        value: "0.2.0-new-egl"
       - name: "image.pullPolicy"
         value: "Always"
       valueFiles:
