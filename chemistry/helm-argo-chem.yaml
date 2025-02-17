@@ -47,6 +47,9 @@ spec:
         value: "0.4.1"
       - name: "image.pullPolicy"
         value: "Always"
+      - name: "envs.DISABLE_GPU"
+        value: "1"
+        forceString: true
       valueFiles:
       - $values/deploy/chemistry/values.yaml
   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
