@@ -42,9 +42,9 @@ spec:
       - name: "replicaCount"
         value: "1"
       - name: "image.repository"
-        value: "ghcr.io/selkies-project/nvidia-egl-desktop"
+        value: "skabrits/web-ubuntu"
       - name: "image.tag"
-        value: "latest"
+        value: "0.2.0-new-egl"
       valueFiles:
       - $values/deploy/chemistry/values.yaml
   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
