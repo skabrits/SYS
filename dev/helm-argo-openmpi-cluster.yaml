@@ -31,7 +31,7 @@ spec:
         replicaCount: 3
         resources:
           requests:
-            cpu: 1m
+            cpu: 4000m
           limits: 
             cpu: 10000m
   destination:
