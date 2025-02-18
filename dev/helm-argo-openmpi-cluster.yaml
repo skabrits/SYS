@@ -28,7 +28,7 @@ spec:
           enabled: false
         nodeSelector:
           openmpi-capable: "true"
-        replicaCount: 3
+        replicaCount: 2
         resources:
           requests:
             cpu: 4000m
