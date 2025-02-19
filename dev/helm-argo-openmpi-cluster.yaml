@@ -22,7 +22,7 @@ spec:
       releaseName: ising
       values: |
         image:
-          repository: skabrits/orca
+          repository: skabrits/openmpi:bench
           pullPolicy: Always
         sharedMemory:
           enabled: false
