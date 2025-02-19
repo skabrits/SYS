@@ -1,40 +1,40 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: openmpi-cluster
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
-  project: default
-  source:
-    path: openmpi-cluster/
-    repoURL: https://github.com/skabrits/openmpi-cluster.git
-    targetRevision: master
-    helm:
-      releaseName: ising
-      values: |
-        image:
-          repository: skabrits/openmpi
-          tag: bench
-          pullPolicy: Always
-        sharedMemory:
-          enabled: false
-        nodeSelector:
-          openmpi-capable: "true"
-        replicaCount: 2
-        resources:
-          requests:
-            cpu: 1m
-          limits: 
-            cpu: 4000m
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: openmpi-cluster
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: openmpi-cluster
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   syncPolicy:
+#     syncOptions:
+#       - CreateNamespace=true
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: true
+#   project: default
+#   source:
+#     path: openmpi-cluster/
+#     repoURL: https://github.com/skabrits/openmpi-cluster.git
+#     targetRevision: master
+#     helm:
+#       releaseName: ising
+#       values: |
+#         image:
+#           repository: skabrits/openmpi
+#           tag: bench
+#           pullPolicy: Always
+#         sharedMemory:
+#           enabled: false
+#         nodeSelector:
+#           openmpi-capable: "true"
+#         replicaCount: 2
+#         resources:
+#           requests:
+#             cpu: 1m
+#           limits: 
+#             cpu: 4000m
+#   destination:
+#     server: "https://kubernetes.default.svc"
+#     namespace: openmpi-cluster
