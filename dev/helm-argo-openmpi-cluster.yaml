@@ -23,7 +23,7 @@ spec:
       values: |
         image:
           repository: skabrits/orca
-          tag: bench
+          tag: latest
           pullPolicy: Always
         sharedMemory:
           enabled: false
