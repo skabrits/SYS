@@ -30,7 +30,7 @@ spec:
       - name: "server.persistentVolume.storageClass"
         value: "longhorn"
       - name: "server.persistentVolume.size"
-        value: "25Gi"
+        value: "30Gi"
       - name: "server.persistentVolume.retentionSize"
         value: "24GB"
   destination:
