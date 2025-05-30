@@ -31,8 +31,8 @@ spec:
         value: "longhorn"
       - name: "server.persistentVolume.size"
         value: "30Gi"
-      - name: "server.persistentVolume.retentionSize"
-        value: "24GB"
+      - name: "server.retentionSize"
+        value: "28GB"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: perform-system
