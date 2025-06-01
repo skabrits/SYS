@@ -33,7 +33,7 @@ spec:
         value: "30Gi"
       - name: "server.retentionSize"
         value: "28GB"
-      - name: "serverFiles.prometheus\\.yml.scrape_configs[0].fallback_scrape_protocol"
+      - name: "serverFiles.prometheus\.yml.scrape_configs[0].fallback_scrape_protocol"
         value: "PrometheusText0.0.4"
   destination:
     server: "https://kubernetes.default.svc"
