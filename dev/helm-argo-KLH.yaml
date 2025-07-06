@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: klh-bot
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  sources:
+  - path: cyberbyson-bot/
+    repoURL: https://github.com/shapirek/CyberByson.git
+    targetRevision: prod
+    helm:
+      releaseName: klh
+      valueFiles:
+      - $values/deploy/klh/values.yaml
+  - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: klh-bot
