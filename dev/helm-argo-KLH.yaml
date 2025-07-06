@@ -21,8 +21,8 @@ spec:
     helm:
       releaseName: klh
       valueFiles:
-      - $values/deploy/klh/values.yaml
-  - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+      - $values/values.yaml
+  - repoURL: 'https://github.com/skabrits/CyberByson-secret.git'
     targetRevision: main
     ref: values
   destination:
