@@ -39,7 +39,6 @@ spec:
               number: 80
   tls:
   - hosts:
-    - skabrits.ddns.net
     - ai-skabrits.duckdns.org
     - ai.skabrits.duckdns.org
     secretName: kubeflow-cert
