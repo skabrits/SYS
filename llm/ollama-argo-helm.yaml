@@ -19,7 +19,7 @@ spec:
   source:
     chart: ollama 
     repoURL: https://otwld.github.io/ollama-helm/
-    targetRevision: "0.63.0"
+    targetRevision: "*"
     helm:
       releaseName: llama3
       parameters:
