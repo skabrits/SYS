@@ -1,50 +1,50 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: ollama
-#   namespace: argocd
-#   annotations:
-#     argocd.argoproj.io/sync-wave: "10"
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io
-# spec:
-#   syncPolicy:
-#     syncOptions:
-#       - CreateNamespace=true
-#     automated:
-#       prune: true
-#       selfHeal: true
-#       allowEmpty: true
-#   project: default
-#   source:
-#     chart: ollama 
-#     repoURL: https://otwld.github.io/ollama-helm/
-#     targetRevision: "0.63.0"
-#     helm:
-#       releaseName: llama3
-#       parameters:
-#       - name: "replicaCount"
-#         value: "1"
-#       - name: "ollama.gpu.enabled"
-#         value: "true"
-#       - name: "ollama.models[0]"
-#         value: "llama3.1:8b"
-#       - name: "ollama.models[1]"
-#         value: "llama3.1:70b"
-#       - name: "persistentVolume.enabled"
-#         value: "true"
-#       - name: "persistentVolume.size"
-#         value: "120Gi"
-#       - name: "persistentVolume.storageClass"
-#         value: "longhorn"
-#       - name: "runtimeClassName"
-#         value: "nvidia"
-#       - name: "service.type"
-#         value: "ClusterIP"
-#       - name: "resources.requests.cpu"
-#         value: "1m"
-#       - name: "resources.requests.memory"
-#         value: "1Ki"
-#   destination:
-#     server: "https://kubernetes.default.svc"
-#     namespace: ollama
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ollama
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    chart: ollama 
+    repoURL: https://otwld.github.io/ollama-helm/
+    targetRevision: "0.63.0"
+    helm:
+      releaseName: llama3
+      parameters:
+      - name: "replicaCount"
+        value: "1"
+      - name: "ollama.gpu.enabled"
+        value: "true"
+      - name: "ollama.models[0]"
+        value: "llama3.1:8b"
+      - name: "ollama.models[1]"
+        value: "llava:13b"
+      - name: "persistentVolume.enabled"
+        value: "true"
+      - name: "persistentVolume.size"
+        value: "60Gi"
+      - name: "persistentVolume.storageClass"
+        value: "longhorn"
+      - name: "runtimeClassName"
+        value: "nvidia"
+      - name: "service.type"
+        value: "ClusterIP"
+      - name: "resources.requests.cpu"
+        value: "1m"
+      - name: "resources.requests.memory"
+        value: "1Ki"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: ollama
