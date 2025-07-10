@@ -1,55 +1,45 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: ingress-webui-http
-#   namespace: ollama
-#   annotations:
-#     nginx.ingress.kubernetes.io/proxy-body-size: 10000m
-#     nginx.ingress.kubernetes.io/proxy-read-timeout: "3000"
-#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-#     argocd.argoproj.io/sync-wave: "10"
-#     cert-manager.io/cluster-issuer: letsencrypt-cluster
-#     nginx.ingress.kubernetes.io/proxy-ssl-verify: "true"
-#     #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-#     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-#     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-#     nginx.ingress.kubernetes.io/use-regex: "true"
-# spec:
-#   ingressClassName: nginx
-#   rules:
-#   - host: skabrits.ddns.net
-#     http:
-#       paths:
-#       - path: /
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: open-webui
-#             port:
-#               number: 80
-#   - host: ai-skabrits.duckdns.org
-#     http:
-#       paths:
-#       - path: /
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: open-webui
-#             port:
-#               number: 80
-#   - host: ai.skabrits.duckdns.org
-#     http:
-#       paths:
-#       - path: /
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: open-webui
-#             port:
-#               number: 80
-#   tls:
-#   - hosts:
-#     - skabrits.ddns.net
-#     - ai-skabrits.duckdns.org
-#     - ai.skabrits.duckdns.org
-#     secretName: kubeflow-cert
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-webui-http
+  namespace: ollama
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 10000m
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3000"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "10"
+    cert-manager.io/cluster-issuer: letsencrypt-cluster
+    nginx.ingress.kubernetes.io/proxy-ssl-verify: "true"
+    #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ai-skabrits.duckdns.org
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: open-webui
+            port:
+              number: 80
+  - host: ai.skabrits.duckdns.org
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: open-webui
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - skabrits.ddns.net
+    - ai-skabrits.duckdns.org
+    - ai.skabrits.duckdns.org
+    secretName: kubeflow-cert
