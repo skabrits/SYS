@@ -39,6 +39,8 @@ spec:
         value: "DEFAULT_MODELS"
       - name: "extraEnvVars[1].value"
         value: "qwen2.5vl:32b"
+      - name: "persistence.size"
+        value: "20Gi"
       # - name: "extraEnvVars[2].name"
       #   value: "RAG_WEB_SEARCH_ENGINE"
       # - name: "extraEnvVars[2].value"
