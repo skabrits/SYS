@@ -29,7 +29,7 @@ spec:
         value: "true"
       - name: "ollama.models.pull[0]"
         value: "llama3.2-vision:11b"
-     - name: "ollama.models.pull[1]"
+      - name: "ollama.models.pull[1]"
         value: "qwen2.5vl:32b"
       - name: "persistentVolume.enabled"
         value: "true"
