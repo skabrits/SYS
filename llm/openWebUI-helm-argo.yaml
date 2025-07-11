@@ -1,71 +1,71 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: openwebui
-#   namespace: argocd
-#   annotations:
-#     argocd.argoproj.io/sync-wave: "10"
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io
-# spec:
-#   ignoreDifferences:
-#     - kind: ServiceAccount
-#       jsonPointers:
-#       - /metadata/automountServiceAccountToken
-#   syncPolicy:
-#     syncOptions:
-#       - CreateNamespace=true
-#     automated:
-#       prune: true
-#       selfHeal: true
-#       allowEmpty: true
-#   project: default
-#   source:
-#     chart: open-webui 
-#     repoURL: https://helm.openwebui.com/
-#     targetRevision: "*"
-#     helm:
-#       releaseName: llm
-#       parameters:
-#       - name: "ollama.enabled"
-#         value: "false"
-#       - name: "ollamaUrls[0]"
-#         value: "http://llama3-ollama.ollama.svc.cluster.local:11434"
-#       - name: "extraEnvVars[0].name"
-#         value: "OPENAI_API_KEY"
-#       - name: "extraEnvVars[0].value"
-#         value: "0p3n-w3bu!"
-#       - name: "extraEnvVars[1].name"
-#         value: "DEFAULT_MODELS"
-#       - name: "extraEnvVars[1].value"
-#         value: "llama3.2-vision:11b"
-#       # - name: "extraEnvVars[2].name"
-#       #   value: "RAG_WEB_SEARCH_ENGINE"
-#       # - name: "extraEnvVars[2].value"
-#       #   value: "searxng"
-#       # - name: "extraEnvVars[3].name"
-#       #   value: "ENABLE_RAG_WEB_SEARCH"
-#       # - name: "extraEnvVars[3].value"
-#       #   value: "True"
-#       #   forceString: true
-#       # - name: "extraEnvVars[4].name"
-#       #   value: "RAG_WEB_SEARCH_RESULT_COUNT"
-#       # - name: "extraEnvVars[4].value"
-#       #   value: "3"
-#       #   forceString: true
-#       # - name: "extraEnvVars[5].name"
-#       #   value: "RAG_WEB_SEARCH_CONCURRENT_REQUESTS"
-#       # - name: "extraEnvVars[5].value"
-#       #   value: "10"
-#       #   forceString: true
-#       # - name: "extraEnvVars[6].name"
-#       #   value: "SEARXNG_QUERY_URL"
-#       # - name: "extraEnvVars[6].value"
-#       #   value: "http://llm-searxng.ollama.svc:8080/search?q=<query>"
-#       - name: "service.type"
-#         value: "LoadBalancer"
-#       - name: "service.annotations.metallb\\.universe\\.tf/loadBalancerIPs"
-#         value: "192.168.0.155"
-#   destination:
-#     server: "https://kubernetes.default.svc"
-#     namespace: ollama
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openwebui
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  ignoreDifferences:
+    - kind: ServiceAccount
+      jsonPointers:
+      - /metadata/automountServiceAccountToken
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    chart: open-webui 
+    repoURL: https://helm.openwebui.com/
+    targetRevision: "6.21.0"
+    helm:
+      releaseName: llm
+      parameters:
+      - name: "ollama.enabled"
+        value: "false"
+      - name: "ollamaUrls[0]"
+        value: "http://llama3-ollama.ollama.svc.cluster.local:11434"
+      - name: "extraEnvVars[0].name"
+        value: "OPENAI_API_KEY"
+      - name: "extraEnvVars[0].value"
+        value: "0p3n-w3bu!"
+      - name: "extraEnvVars[1].name"
+        value: "DEFAULT_MODELS"
+      - name: "extraEnvVars[1].value"
+        value: "qwen2.5vl:32b"
+      # - name: "extraEnvVars[2].name"
+      #   value: "RAG_WEB_SEARCH_ENGINE"
+      # - name: "extraEnvVars[2].value"
+      #   value: "searxng"
+      # - name: "extraEnvVars[3].name"
+      #   value: "ENABLE_RAG_WEB_SEARCH"
+      # - name: "extraEnvVars[3].value"
+      #   value: "True"
+      #   forceString: true
+      # - name: "extraEnvVars[4].name"
+      #   value: "RAG_WEB_SEARCH_RESULT_COUNT"
+      # - name: "extraEnvVars[4].value"
+      #   value: "3"
+      #   forceString: true
+      # - name: "extraEnvVars[5].name"
+      #   value: "RAG_WEB_SEARCH_CONCURRENT_REQUESTS"
+      # - name: "extraEnvVars[5].value"
+      #   value: "10"
+      #   forceString: true
+      # - name: "extraEnvVars[6].name"
+      #   value: "SEARXNG_QUERY_URL"
+      # - name: "extraEnvVars[6].value"
+      #   value: "http://llm-searxng.ollama.svc:8080/search?q=<query>"
+      - name: "service.type"
+        value: "ClusterIP"
+      # - name: "service.annotations.metallb\\.universe\\.tf/loadBalancerIPs"
+      #   value: "192.168.0.155"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: ollama
