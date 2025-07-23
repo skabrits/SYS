@@ -41,7 +41,7 @@ spec:
         value: "nvidia"
       - name: "service.type"
         value: "LoadBalancer"
-      - name: "service.annotation"
+      - name: "service.annotations"
         value: "metallb.universe.tf/loadBalancerIPs: 192.168.0.154"
       - name: "resources.requests.cpu"
         value: "1m"
