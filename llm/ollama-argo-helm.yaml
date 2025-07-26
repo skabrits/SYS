@@ -28,7 +28,7 @@ spec:
       - name: "ollama.gpu.enabled"
         value: "true"
       - name: "ollama.models.pull[0]"
-        value: "llama3.2-vision:11b"
+        value: "qwen2.5vl:7b"
       - name: "ollama.models.pull[1]"
         value: "qwen2.5vl:32b"
       - name: "persistentVolume.enabled"
