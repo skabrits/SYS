@@ -38,6 +38,8 @@ spec:
         forceString: true
       - name: "config.dbms\\.security\\.procedures\\.unrestricted"
         value: "apoc.*"
+      - name: "config.dbms\\.security\\.http_access_control_allow_origin"
+        value: "https://gnj.skabrits.duckdns.org"
       - name: "config.server\\.config\\.strict_validation\\.enabled"
         value: "false"
         forceString: true
