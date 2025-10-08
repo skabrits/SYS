@@ -25,7 +25,7 @@ spec:
           service:
             name: arbitraz-lb-neo4j
             port:
-              number: 7678
+              number: 7687
   - host: gnj.skabrits.duckdns.org
     http:
       paths:
