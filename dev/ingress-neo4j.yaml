@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-neo4j-http
+  namespace: dev
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 10000m
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "10"
+    cert-manager.io/cluster-issuer: letsencrypt-cluster
+    nginx.ingress.kubernetes.io/proxy-ssl-verify: "true"
+    #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: nj.skabrits.duckdns.org
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: arbitraz-lb-neo4j
+            port:
+              number: 7678
+  - host: gnj.skabrits.duckdns.org
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: arbitraz-lb-neo4j
+            port:
+              number: 7474
+  tls:
+  - hosts:
+    - nj.skabrits.duckdns.org
+    - gnj.skabrits.duckdns.org
+    secretName: kubeflow-cert
