@@ -40,4 +40,4 @@ spec:
   - hosts:
     - nj.skabrits.duckdns.org
     - gnj.skabrits.duckdns.org
-    secretName: kubeflow-cert
+    secretName: neo4j-cert-cert
