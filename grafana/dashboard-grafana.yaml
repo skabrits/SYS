@@ -28379,7 +28379,7 @@ data:
               "root_selector": "",
               "source": "url",
               "type": "json",
-              "url": "http://$instance:9110/",
+              "url": "http://$instance:$port/",
               "url_options": {
                 "data": "",
                 "method": "GET"
@@ -28484,6 +28484,26 @@ data:
             "tagsQuery": "",
             "type": "query",
             "useTags": false
+          },
+          {
+            "current": {
+              "selected": false,
+              "text": "9110",
+              "value": "9110"
+            },
+            "hide": 0,
+            "label": "Port",
+            "name": "port",
+            "options": [
+              {
+                "selected": true,
+                "text": "9110",
+                "value": "9110"
+              }
+            ],
+            "query": "9110",
+            "skipUrlSync": false,
+            "type": "textbox"
           }
         ]
       },
