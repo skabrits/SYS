@@ -105,6 +105,69 @@ data:
                 severity: critical
                 type: cluster_wide
               isPaused: false
+        - orgId: 1
+          name: Proxy
+          folder: cluster_alerts
+          interval: 5m
+          rules:
+            - uid: cf12vrl1ef01sb
+              title: Proxy Failed
+              condition: B
+              data:
+                - refId: A
+                  relativeTimeRange:
+                    from: 600
+                    to: 0
+                  datasourceUid: PBFA97CFB590B2093
+                  model:
+                    editorMode: code
+                    expr: (increase(proxy_success_total[4m]) > bool 0) * (1-(increase(proxy_failure_total[4m]) > bool 0))
+                    instant: true
+                    intervalMs: 1000
+                    legendFormat: __auto
+                    maxDataPoints: 43200
+                    range: false
+                    refId: A
+                - refId: B
+                  datasourceUid: __expr__
+                  model:
+                    conditions:
+                        - evaluator:
+                            params:
+                                - 0
+                                - 0
+                            type: gt
+                          operator:
+                            type: and
+                          query:
+                            params: []
+                          reducer:
+                            params: []
+                            type: avg
+                          type: query
+                    datasource:
+                        name: Expression
+                        type: __expr__
+                        uid: __expr__
+                    expression: $A < 1
+                    hide: false
+                    intervalMs: 1000
+                    maxDataPoints: 43200
+                    refId: B
+                    type: math
+              dashboardUid: ff12v9dtb9b7kf
+              panelId: 1
+              noDataState: NoData
+              execErrState: Error
+              for: 5m
+              annotations:
+                __dashboardUid__: ff12v9dtb9b7kf
+                __panelId__: "1"
+                summary: Proxy is down
+              labels: {}
+              isPaused: false
+              notification_settings:
+                receiver: TG report
 ---
 apiVersion: v1
 kind: ConfigMap
