@@ -110,7 +110,8 @@ data:
       folder: cluster_alerts
       interval: 5m
       rules:
-        - title: Proxy Failed
+        - uid: af15v9tnqrmdcd
+          title: Proxy Failed
           condition: B
           data:
             - refId: A
