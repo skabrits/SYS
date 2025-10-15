@@ -38,7 +38,7 @@ metadata:
   labels:
     grafana_alert: "1"
 data:
-  grafana-alert.yaml: |-
+  grafana-alert-rules.yaml: |-
     apiVersion: 1
     groups:
     - orgId: 1
