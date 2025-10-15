@@ -36094,7 +36094,7 @@ data:
           "id": 1,
           "options": {
             "colorMode": "value",
-            "graphMode": "area",
+            "graphMode": "none",
             "justifyMode": "auto",
             "orientation": "auto",
             "percentChangeColorMode": "standard",
