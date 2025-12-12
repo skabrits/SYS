@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dns-server
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    chart: pihole
+    repoURL: https://mojo2600.github.io/pihole-kubernetes
+    targetRevision: "2.35.0"
+    helm:
+      releaseName: dns-server
+      values: |
+        serviceWeb:
+          type: LoadBalancer
+        serviceDns:
+          type: LoadBalancer
+        persistentVolumeClaim:
+          enabled: true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: dns-server
