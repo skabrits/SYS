@@ -19,7 +19,7 @@ spec:
     repoURL: https://nextcloud.github.io/helm/
     targetRevision: "8.6.0"
     helm:
-      releaseName: slava
+      releaseName: nas
       values: |
         persistence:
           enabled: true
