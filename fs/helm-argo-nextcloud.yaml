@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nextcloud
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  sources:
+  - chart: nextcloud
+    repoURL: https://nextcloud.github.io/helm/
+    targetRevision: "8.6.0"
+    helm:
+      releaseName: slava
+      values: |
+        persistence:
+          enabled: true
+          storageClass: longhorn
+          size: 100Gi
+          nextcloudData:
+            enabled: true
+            storageClass: longhorn
+            size: 10Gi
+      valueFiles:
+      - $values/deploy/nextcloud/values.yaml
+  - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: nextcloud
