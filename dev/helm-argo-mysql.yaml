@@ -18,8 +18,8 @@ spec:
   project: default
   source:
     chart: mysql
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: "*"
+    repoURL: registry-1.docker.io/bitnamicharts
+    targetRevision: "12.3.5"
     helm:
       releaseName: schedule
       parameters:
