@@ -23,6 +23,8 @@ spec:
     helm:
       releaseName: schedule
       parameters:
+      - name: "image.registry"
+        value: "public.ecr.aws"
       - name: "auth.rootPassword"
         value: "test-123"
       - name: "primary.service.type"
