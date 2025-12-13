@@ -23,6 +23,8 @@ spec:
     helm:
       releaseName: arbitraz
       parameters:
+      - name: "image.registry"
+        value: "public.ecr.aws"
       - name: "auth.password"
         value: "test-123"
       - name: "service.type"
