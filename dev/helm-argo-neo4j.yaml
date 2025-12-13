@@ -1,57 +1,57 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: neoj4
-#   namespace: argocd
-#   annotations:
-#     argocd.argoproj.io/sync-wave: "10"
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io
-# spec:
-#   syncPolicy:
-#     syncOptions:
-#       - CreateNamespace=true
-#     automated:
-#       prune: true
-#       selfHeal: true
-#       allowEmpty: true
-#   project: default
-#   sources:
-#   - path: neo4j
-#     repoURL: https://github.com/neo4j/helm-charts.git
-#     targetRevision: "5.24.1"
-#     helm:
-#       releaseName: arbitraz
-#       parameters:
-#       - name: "volumes.data.mode"
-#         value: "defaultStorageClass"
-#       - name: "config.server\\.directories\\.plugins"
-#         value: "/var/lib/neo4j/labs"
-#       - name: "apoc_config.apoc\\.export\\.file\\.enabled"
-#         value: "true"
-#         forceString: true
-#       - name: "apoc_config.apoc\\.import\\.file\\.enabled"
-#         value: "true"
-#         forceString: true
-#       - name: "apoc_config.apoc\\.import\\.file\\.use_neo4j_config"
-#         value: "true"
-#         forceString: true
-#       - name: "config.dbms\\.security\\.procedures\\.unrestricted"
-#         value: "apoc.*"
-#       - name: "config.dbms\\.security\\.http_access_control_allow_origin"
-#         value: "https://gnj.skabrits.duckdns.org"
-#       - name: "config.server\\.config\\.strict_validation\\.enabled"
-#         value: "false"
-#         forceString: true
-#       - name: "neo4j.resources.cpu"
-#         value: "5000m"
-#       - name: "neo4j.resources.memory"
-#         value: "8Gi"
-#       valueFiles:
-#       - $values/deploy/dev/values.yaml
-#   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
-#     targetRevision: main
-#     ref: values
-#   destination:
-#     server: "https://kubernetes.default.svc"
-#     namespace: dev
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: neoj4
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  sources:
+  - path: neo4j
+    repoURL: https://github.com/neo4j/helm-charts.git
+    targetRevision: "5.24.1"
+    helm:
+      releaseName: arbitraz
+      parameters:
+      - name: "volumes.data.mode"
+        value: "defaultStorageClass"
+      - name: "config.server\\.directories\\.plugins"
+        value: "/var/lib/neo4j/labs"
+      - name: "apoc_config.apoc\\.export\\.file\\.enabled"
+        value: "true"
+        forceString: true
+      - name: "apoc_config.apoc\\.import\\.file\\.enabled"
+        value: "true"
+        forceString: true
+      - name: "apoc_config.apoc\\.import\\.file\\.use_neo4j_config"
+        value: "true"
+        forceString: true
+      - name: "config.dbms\\.security\\.procedures\\.unrestricted"
+        value: "apoc.*"
+      - name: "config.dbms\\.security\\.http_access_control_allow_origin"
+        value: "https://gnj.skabrits.duckdns.org"
+      - name: "config.server\\.config\\.strict_validation\\.enabled"
+        value: "false"
+        forceString: true
+      - name: "neo4j.resources.cpu"
+        value: "5000m"
+      - name: "neo4j.resources.memory"
+        value: "8Gi"
+      valueFiles:
+      - $values/deploy/dev/values.yaml
+  - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: dev
