@@ -1,50 +1,50 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: n8n
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "10"
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
-  project: default
-  source:
-    path: charts/n8n
-    repoURL: https://github.com/8gears/n8n-helm-chart.git
-    targetRevision: "main"
-    helm:
-      releaseName: workflow
-      values: |
-        # config:
-        #   path: /n8n/
-        #   host: skabrits.tplinkdns.com
-        #   # port: 443
-        #   # protocol: https
-        extraEnv:
-          # N8N_PATH: n8n/
-          WEBHOOK_URL: "https://skabrits.duckdns.org/"
-          # N8N_PROTOCOL: https
-        database:
-          type: "mysqldb"
-          mysqldb:
-            host: schedule-mysql.dev.svc
-            password: test-123
-        service:
-          type: LoadBalancer
-        persistence:
-          enabled: true
-          storageClass: "longhorn"
-          accessModes:
-            - ReadWriteOnce
-          size: 10Gi
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: workflow
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: n8n
+#   namespace: argocd
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "10"
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   syncPolicy:
+#     syncOptions:
+#       - CreateNamespace=true
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: true
+#   project: default
+#   source:
+#     path: charts/n8n
+#     repoURL: https://github.com/8gears/n8n-helm-chart.git
+#     targetRevision: "main"
+#     helm:
+#       releaseName: workflow
+#       values: |
+#         # config:
+#         #   path: /n8n/
+#         #   host: skabrits.tplinkdns.com
+#         #   # port: 443
+#         #   # protocol: https
+#         extraEnv:
+#           # N8N_PATH: n8n/
+#           WEBHOOK_URL: "https://skabrits.duckdns.org/"
+#           # N8N_PROTOCOL: https
+#         database:
+#           type: "mysqldb"
+#           mysqldb:
+#             host: schedule-mysql.dev.svc
+#             password: test-123
+#         service:
+#           type: LoadBalancer
+#         persistence:
+#           enabled: true
+#           storageClass: "longhorn"
+#           accessModes:
+#             - ReadWriteOnce
+#           size: 10Gi
+#   destination:
+#     server: "https://kubernetes.default.svc"
+#     namespace: workflow
