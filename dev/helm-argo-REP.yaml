@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rep-bot
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  source:
+    path: deploy/ptb
+    repoURL: https://github.com/polina5935/EGE.git
+    targetRevision: main
+    helm:
+      releaseName: repetitor
+      valueFiles:
+      - values.yaml
+      - ../values.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: repetitor-bot
