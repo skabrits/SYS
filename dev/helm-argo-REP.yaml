@@ -14,8 +14,8 @@ spec:
       selfHeal: true
       allowEmpty: true
   project: default
-  source:
-    path: deploy/ptb
+  sources:
+  - path: deploy/ptb
     repoURL: https://github.com/polina5935/EGE.git
     targetRevision: main
     helm:
@@ -23,6 +23,10 @@ spec:
       valueFiles:
       - values.yaml
       - ../values.yaml
+      - $values/values.yaml
+  - repoURL: 'https://github.com/skabrits/repetitor-deploy.git'
+    targetRevision: main
+    ref: values
   destination:
     server: "https://kubernetes.default.svc"
     namespace: repetitor-bot
