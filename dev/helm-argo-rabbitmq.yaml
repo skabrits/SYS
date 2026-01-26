@@ -1,34 +1,34 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: rabbitmq
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "10"
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
-  project: default
-  source:
-    chart: rabbitmq
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: "15.0.1"
-    helm:
-      releaseName: arbitraz
-      parameters:
-      - name: "image.registry"
-        value: "public.ecr.aws"
-      - name: "auth.password"
-        value: "test-123"
-      - name: "service.type"
-        value: "LoadBalancer"
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: dev
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: rabbitmq
+#   namespace: argocd
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "10"
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   syncPolicy:
+#     syncOptions:
+#       - CreateNamespace=true
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: true
+#   project: default
+#   source:
+#     chart: rabbitmq
+#     repoURL: https://charts.bitnami.com/bitnami
+#     targetRevision: "15.0.1"
+#     helm:
+#       releaseName: arbitraz
+#       parameters:
+#       - name: "image.registry"
+#         value: "public.ecr.aws"
+#       - name: "auth.password"
+#         value: "test-123"
+#       - name: "service.type"
+#         value: "LoadBalancer"
+#   destination:
+#     server: "https://kubernetes.default.svc"
+#     namespace: dev
