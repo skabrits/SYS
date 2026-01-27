@@ -26,6 +26,7 @@ spec:
       kind: CustomResourceDefinition
       jsonPointers:
       - /spec/conversion/webhook/clientConfig/caBundle
+      - /spec/preserveUnknownFields
   destination:
     namespace: kubeflow
     server: https://kubernetes.default.svc
