@@ -9,10 +9,10 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
+    #automated:
+    #  prune: true
+    #  selfHeal: true
+    #  allowEmpty: true
   project: default
   source:
     chart: longhorn
