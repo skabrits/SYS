@@ -33,6 +33,10 @@ spec:
     targetRevision: "3.3.4"
     helm:
       releaseName: security
+      parameters:
+      - name: "webhooksCleanup.registry"
+        value: "public.ecr.aws"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kyverno
+
