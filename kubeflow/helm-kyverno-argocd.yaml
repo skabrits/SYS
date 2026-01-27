@@ -34,13 +34,14 @@ spec:
     helm:
       releaseName: security
       parameters:
-      - name: "webhooksCleanup.repository"
+      - name: "webhooksCleanup.image.repository"
         value: "public.ecr.aws/bitnami/kubectl"
-      - name: "policyReportsCleanup.repository"
+      - name: "policyReportsCleanup.image.repository"
         value: "public.ecr.aws/bitnami/kubectl"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kyverno
+
 
 
 
