@@ -36015,7 +36015,7 @@ data:
             "styles": "",
             "wrap": false
           },
-          "pluginVersion": "6.0.0",
+          "pluginVersion": "6.2.0",
           "targets": [
             {
               "columns": [],
@@ -36047,6 +36047,7 @@ data:
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
+          "description": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -36226,7 +36227,7 @@ data:
                     "value": {
                       "legend": false,
                       "tooltip": false,
-                      "viz": true
+                      "viz": false
                     }
                   }
                 ]
