@@ -6,19 +6,6 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  ignoreDifferences:
-    - group: ""
-      kind: Secret
-      name: repetitor-rabbitmq
-      namespace: repetitor-bot
-      jqPathExpressions:
-        - '.data["rabbitmq-erlang-cookie"]'
-    - group: apps
-      kind: StatefulSet
-      name: repetitor-rabbitmq
-      namespace: repetitor-bot
-      jqPathExpressions:
-        - '.spec.template.metadata.annotations["checksum/secret"]'
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
