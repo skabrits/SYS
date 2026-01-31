@@ -14,6 +14,7 @@ spec:
         - /spec/replicas
   syncPolicy:
     syncOptions:
+      - RespectIgnoreDifferences=true
       - CreateNamespace=true
     automated:
       prune: true
