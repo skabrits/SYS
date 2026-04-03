@@ -43,6 +43,9 @@ spec:
           requests:
             cpu: 500m
             memory: 1Gi
+
+        nodeSelector:
+          kubernetes.io/hostname: user1-desktop
       valueFiles:
       - $values/deploy/jellyfin/values.yaml
   - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
