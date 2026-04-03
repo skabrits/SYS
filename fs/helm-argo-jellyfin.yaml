@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jellyfin
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  sources:
+  - chart: nextcloud
+    repoURL: https://nextcloud.github.io/helm/
+    targetRevision: "8.6.0"
+    helm:
+      releaseName: video
+      values: |
+        replicaCount: 1
+        
+        image:
+          pullPolicy: IfNotPresent
+        
+        persistence:
+          config:
+            enabled: true
+            size: 5Gi
+            storageClass: 'longhorn'
+          media:
+            enabled: true
+            type: hostPath
+            hostPath: "/mnt/seagate/"
+        
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 4Gi
+          requests:
+            cpu: 500m
+            memory: 1Gi
+      valueFiles:
+      - $values/deploy/jellyfin/values.yaml
+  - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: jellyfin
