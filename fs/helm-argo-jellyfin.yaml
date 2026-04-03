@@ -15,8 +15,8 @@ spec:
       allowEmpty: true
   project: default
   sources:
-  - chart: nextcloud
-    repoURL: https://nextcloud.github.io/helm/
+  - chart: jellyfin
+    repoURL: https://jellyfin.github.io/jellyfin-helm
     targetRevision: "8.6.0"
     helm:
       releaseName: video
@@ -34,7 +34,7 @@ spec:
           media:
             enabled: true
             type: hostPath
-            hostPath: "/mnt/seagate/"
+            hostPath: "/mnt/seagate/root"
         
         resources:
           limits:
