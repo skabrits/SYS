@@ -24,6 +24,8 @@ spec:
         replicaCount: 1
         
         image:
+          repository: docker.io/skabrits/jellyfin
+          tag: "0.1.0"
           pullPolicy: IfNotPresent
         
         persistence:
