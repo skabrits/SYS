@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pod-gateway
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+  project: default
+  sources:
+  - path: charts/port-configurator/
+    repoURL: https://github.com/skabrits/port-configurator.git
+    targetRevision: master
+    helm:
+      releaseName: pod-gateway
+      parameters:
+      - name: "provider.namespace"
+        value: "pod-gateway"
+      - name: "provider.name"
+        value: "PodGateway"
+      - name: "image.pullPolicy"
+        value: "Always"
+      - name: "image.tag"
+        value: "0.2.0"
+      valueFiles:
+      - $values/deploy/podgateway/values.yaml
+  - repoURL: 'https://github.com/skabrits/cluster-sensitive.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: pod-gateway
